@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trámites del Personal – Universidad</title>
+  <style>
+    :root {
+      --azul:      #1a3a6b;
+      --azul-claro:#2563b0;
+      --verde:     #16723a;
+      --verde-claro:#22a05a;
+      --gris-bg:   #f4f6f9;
+      --gris-borde:#d0d7e3;
+      --texto:     #1e2332;
+      --blanco:    #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--gris-bg);
+      color: var(--texto);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 20px 16px 16px;
+      text-align: center;
+    }
+    header .logo-placeholder {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    header p {
+      font-size: 0.82rem;
+      opacity: .82;
+      margin-top: 4px;
+    }
+
+    /* ── DOWNLOAD BUTTON ── */
+    .download-bar {
+      background: var(--azul-claro);
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .download-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blanco);
+      color: var(--azul);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.18);
+      transition: background .2s;
+    }
+    .download-bar a:hover { background: #e8eef8; }
+    .download-bar a svg { flex-shrink: 0; }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      background: var(--blanco);
+      border-bottom: 3px solid var(--gris-borde);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 13px 8px;
+      border: none;
+      background: transparent;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #666;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+      transition: color .2s, border-color .2s;
+    }
+    .tab-btn.active-doc  { color: var(--azul);  border-color: var(--azul); }
+    .tab-btn.active-nod  { color: var(--verde); border-color: var(--verde); }
+
+    /* ── MAIN ── */
+    main { padding: 16px; max-width: 700px; margin: 0 auto; }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      font-size: 0.85rem;
+    }
+    .intro-card.doc { background: #dbeafe; border-left: 5px solid var(--azul-claro); }
+    .intro-card.nod { background: #d1fae5; border-left: 5px solid var(--verde-claro); }
+    .intro-card strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+
+    /* ── SECTION ── */
+    .section {
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-header .icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      flex: 1;
+    }
+    .section-header .chevron {
+      font-size: 0.9rem;
+      transition: transform .25s;
+      color: #888;
+    }
+    .section.open .chevron { transform: rotate(180deg); }
+
+    /* color de header según panel */
+    #panel-doc .section-header { background: #eef3fb; }
+    #panel-doc .section-header h2 { color: var(--azul); }
+    #panel-nod .section-header { background: #ecfdf5; }
+    #panel-nod .section-header h2 { color: var(--verde); }
+
+    .section-body {
+      display: none;
+      padding: 0 16px 16px;
+      border-top: 1px solid var(--gris-borde);
+    }
+    .section.open .section-body { display: block; }
+
+    /* ── STEPS ── */
+    .steps { margin-top: 12px; padding-left: 0; list-style: none; counter-reset: step; }
+    .steps li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      counter-increment: step;
+    }
+    .steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blanco);
+      margin-top: 2px;
+    }
+    #panel-doc .steps li::before { background: var(--azul-claro); }
+    #panel-nod .steps li::before { background: var(--verde-claro); }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+      margin-top: 10px;
+    }
+    th {
+      text-align: left;
+      padding: 7px 9px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blanco);
+    }
+    #panel-doc th { background: var(--azul-claro); }
+    #panel-nod th { background: var(--verde-claro); }
+    td { padding: 7px 9px; border-bottom: 1px solid #e8edf4; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ── NOTE ── */
+    .note {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 4px;
+      padding: 9px 12px;
+      font-size: 0.82rem;
+      margin-top: 12px;
+      color: #7c5a00;
+    }
+    .note strong { display: block; margin-bottom: 2px; }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      padding: 16px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .contact-box h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--azul); }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 7px;
+      font-size: 0.88rem;
+    }
+    .contact-item a { color: var(--azul-claro); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+      header h1 { font-size: 1.1rem; }
+      table { font-size: 0.77rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-placeholder">🎓</div>
+  <h1>Procedimientos de Recursos Humanos</h1>
+  <p>Información para el personal de la Universidad</p>
+</header>
+
+<!-- DESCARGA PDF -->
+<div class="download-bar">
+  <a href="tramites-personal.pdf" download>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Descargar guía completa en PDF
+  </a>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active-doc" id="btn-doc" onclick="switchTab('doc')">📘 Docentes</button>
+  <button class="tab-btn" id="btn-nod" onclick="switchTab('nod')">📗 No Docentes</button>
+</div>
+
+<main>
+
+  <!-- ══════════════ PANEL DOCENTES ══════════════ -->
+  <div class="panel active" id="panel-doc">
+    <div class="intro-card doc">
+      <strong>Personal Docente</strong>
+      Profesores, Jefes de Trabajos Prácticos, Auxiliares y demás cargos docentes de la Universidad.
+      El régimen se rige por el Estatuto Universitario y la normativa de la paritaria docente nacional.
+    </div>
+
+    <!-- VACACIONES -->
+    <div class="section open" id="sec-doc-vac">
+      <div class="section-header" onclick="toggleSection('sec-doc-vac')">
+        <span class="icon">🏖️</span>
+        <h2>Vacaciones Anuales</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Antigüedad en la Universidad</th><th>Días hábiles</th></tr></thead>
+          <tbody>
+            <tr><td>Hasta 5 años</td><td>21 días hábiles</td></tr>
+            <tr><td>De 5 a 10 años</td><td>28 días hábiles</td></tr>
+            <tr><td>Más de 10 años</td><td>35 días hábiles</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Acordar el período con el titular de cátedra o Director de Departamento antes del 30 de noviembre.</li>
+          <li>Completar el formulario de solicitud de licencia vacacional (disponible en RRHH o en el portal institucional).</li>
+          <li>Presentar el formulario en la Dirección de Personal con al menos <strong>15 días de anticipación</strong> al inicio.</li>
+          <li>Aguardar la resolución aprobatoria. En ningún caso las vacaciones se iniciarán sin autorización formal.</li>
+        </ol>
+        <div class="note"><strong>⚠️ Importante:</strong> Los docentes con cargo a tiempo completo deben coordinar el goce de vacaciones durante los recesos oficiales (verano e invierno), salvo excepciones autorizadas por el Decano/Rector.</div>
+      </div>
+    </div>
+
+    <!-- LICENCIA MÉDICA -->
+    <div class="section" id="sec-doc-med">
+      <div class="section-header" onclick="toggleSection('sec-doc-med')">
+        <span class="icon">🏥</span>
+        <h2>Licencia por Enfermedad / Médica</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Situación</th><th>Duración máxima con haberes</th></tr></thead>
+          <tbody>
+            <tr><td>Enfermedad común (hasta 10 años de antigüedad)</td><td>3 meses continuos o alternados por año</td></tr>
+            <tr><td>Enfermedad común (más de 10 años)</td><td>6 meses continuos o alternados por año</td></tr>
+            <tr><td>Enfermedad de larga duración (crónica o grave)</td><td>Hasta 2 años – consultar RRHH</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Notificar verbalmente al responsable de cátedra o departamento el <strong>mismo día de la ausencia</strong>, antes del horario de ingreso.</li>
+          <li>Presentar el certificado médico en la Dirección de Personal dentro de las <strong>48 horas hábiles</strong> de iniciada la licencia.</li>
+          <li>Si la licencia supera los <strong>3 días corridos</strong>, la Universidad puede convocar a una junta médica oficial.</li>
+          <li>Una vez de alta, presentar certificado de alta médica antes de reintegrarse.</li>
+        </ol>
+        <div class="note"><strong>⚠️ Importante:</strong> El certificado debe indicar diagnóstico (puede ser en clave CIE), fecha de inicio y días de reposo indicados. Sin certificado, la ausencia se computa como inasistencia injustificada.</div>
+      </div>
+    </div>
+
+    <!-- LICENCIAS ESPECIALES -->
+    <div class="section" id="sec-doc-esp">
+      <div class="section-header" onclick="toggleSection('sec-doc-esp')">
+        <span class="icon">📋</span>
+        <h2>Licencias Especiales</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Motivo</th><th>Días hábiles</th><th>Documentación requerida</th></tr></thead>
+          <tbody>
+            <tr><td>Matrimonio</td><td>10 días</td><td>Partida de matrimonio o acta de celebración</td></tr>
+            <tr><td>Nacimiento / adopción de hijo</td><td>5 días (progenitor no gestante)</td><td>Acta de nacimiento o resolución judicial</td></tr>
+            <tr><td>Fallecimiento de cónyuge, conviviente, padres, hijos</td><td>5 días</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallecimiento de hermanos</td><td>3 días</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallecimiento de abuelos, suegros u otros familiares</td><td>1 día</td><td>Acta de defunción</td></tr>
+            <tr><td>Mudanza</td><td>1 día</td><td>Contrato o escritura nuevo domicilio</td></tr>
+            <tr><td>Donación de sangre</td><td>1 día</td><td>Constancia del banco de sangre</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Avisar al responsable de cátedra/departamento con la mayor anticipación posible.</li>
+          <li>Completar el formulario de licencia especial (disponible en RRHH).</li>
+          <li>Adjuntar la documentación probatoria correspondiente.</li>
+          <li>Presentar todo en la Dirección de Personal <strong>dentro de los 3 días hábiles</strong> de iniciada la licencia.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- LICENCIA POR ESTUDIO -->
+    <div class="section" id="sec-doc-est">
+      <div class="section-header" onclick="toggleSection('sec-doc-est')">
+        <span class="icon">📚</span>
+        <h2>Licencia por Estudio / Capacitación</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Tipo</th><th>Duración</th><th>Documentación</th></tr></thead>
+          <tbody>
+            <tr><td>Para rendir exámenes (carrera de grado/posgrado)</td><td>Hasta 10 días hábiles por año</td><td>Certificado de alumno regular + libreta / constancia de examen</td></tr>
+            <tr><td>Jornadas, congresos o capacitaciones institucionales</td><td>Según duración del evento</td><td>Programa y constancia de participación</td></tr>
+            <tr><td>Becas o comisiones de estudio</td><td>Variable – requiere resolución del CD/Rectorado</td><td>Resolución aprobatoria + convenio</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Para exámenes: presentar en RRHH la constancia de alumno regular <strong>con 72 hs de anticipación</strong>.</li>
+          <li>Solicitar autorización de ausencia firmada por el Director de Departamento.</li>
+          <li>Presentar comprobante del examen rendido dentro de las <strong>48 hs hábiles</strong> de haberlo rendido.</li>
+          <li>Para jornadas/congresos: adjuntar programa del evento y nota de autorización del superior.</li>
+        </ol>
+        <div class="note"><strong>ℹ️ Nota:</strong> Cada Universidad puede tener disposiciones adicionales para docentes-investigadores. Consultá el Reglamento de Investigación y Posgrado de tu Facultad.</div>
+      </div>
+    </div>
+  </div><!-- /panel-doc -->
+
+
+  <!-- ══════════════ PANEL NO DOCENTES ══════════════ -->
+  <div class="panel" id="panel-nod">
+    <div class="intro-card nod">
+      <strong>Personal No Docente</strong>
+      Administrativos, técnicos, maestranza y demás trabajadores no docentes.
+      El régimen se rige principalmente por el <em>Convenio Colectivo de Trabajo del Sector No Docente de las Universidades Nacionales</em> (homologado por Decreto Nº 366/06 y actualizaciones).
+    </div>
+
+    <!-- VACACIONES -->
+    <div class="section open" id="sec-nod-vac">
+      <div class="section-header" onclick="toggleSection('sec-nod-vac')">
+        <span class="icon">🏖️</span>
+        <h2>Vacaciones Anuales</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Antigüedad</th><th>Días hábiles</th></tr></thead>
+          <tbody>
+            <tr><td>Hasta 5 años</td><td>15 días hábiles</td></tr>
+            <tr><td>De 5 a 10 años</td><td>20 días hábiles</td></tr>
+            <tr><td>De 10 a 20 años</td><td>25 días hábiles</td></tr>
+            <tr><td>Más de 20 años</td><td>30 días hábiles</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>El período de vacaciones se acuerda con el jefe inmediato, teniendo en cuenta las necesidades del servicio.</li>
+          <li>Completar el <strong>Formulario de Solicitud de Licencia Vacacional</strong> disponible en RRHH o en el portal institucional.</li>
+          <li>Presentarlo con <strong>al menos 10 días hábiles de anticipación</strong>.</li>
+          <li>Aguardar la aprobación formal; no se puede iniciar el período sin autorización escrita.</li>
+          <li>La licencia vacacional debe gozarse dentro del año en que se genera (o hasta el 30 de abril del año siguiente en casos especiales).</li>
+        </ol>
+        <div class="note"><strong>⚠️ Importante:</strong> Las vacaciones no pueden fraccionarse en períodos menores a 7 días hábiles continuos. Para fraccionamiento especial, requerís autorización de RRHH.</div>
+      </div>
+    </div>
+
+    <!-- LICENCIA MÉDICA -->
+    <div class="section" id="sec-nod-med">
+      <div class="section-header" onclick="toggleSection('sec-nod-med')">
+        <span class="icon">🏥</span>
+        <h2>Licencia por Enfermedad / Médica</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Situación</th><th>Duración con goce de haberes</th></tr></thead>
+          <tbody>
+            <tr><td>Enfermedad de corta duración (sin hospitalización)</td><td>Hasta 6 meses por año</td></tr>
+            <tr><td>Enfermedad prolongada o grave</td><td>Hasta 12 meses (con junta médica)</td></tr>
+            <tr><td>Accidente de trabajo o enfermedad profesional</td><td>Hasta alta médica – coordinado con ART</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Notificar la ausencia al jefe inmediato y a la Dirección de Personal antes del inicio del turno o lo antes posible.</li>
+          <li>Presentar el certificado médico en la Dirección de Personal dentro de las <strong>48 horas hábiles</strong> de iniciada la licencia. El certificado debe incluir diagnóstico (puede ser codificado), pronóstico y días de reposo.</li>
+          <li>Si la licencia supera los <strong>2 días corridos</strong>, RRHH puede solicitar control por médico oficial de la Universidad.</li>
+          <li>Al reintegrarse: presentar <strong>certificado de alta médica</strong> antes de tomar el puesto.</li>
+          <li>En caso de accidente de trabajo: notificar de inmediato a RRHH para activación de la ART.</li>
+        </ol>
+        <div class="note"><strong>⚠️ Importante:</strong> La ausencia sin certificado será registrada como <em>inasistencia injustificada</em> y puede acarrear descuento de haberes y medidas disciplinarias. Ante cualquier duda, comunicarse con RRHH antes de reintegrarse.</div>
+      </div>
+    </div>
+
+    <!-- LICENCIAS ESPECIALES -->
+    <div class="section" id="sec-nod-esp">
+      <div class="section-header" onclick="toggleSection('sec-nod-esp')">
+        <span class="icon">📋</span>
+        <h2>Licencias Especiales</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Motivo</th><th>Días hábiles</th><th>Documentación requerida</th></tr></thead>
+          <tbody>
+            <tr><td>Matrimonio</td><td>10 días</td><td>Acta / partida de matrimonio</td></tr>
+            <tr><td>Nacimiento / adopción de hijo/a</td><td>5 días (progenitor no gestante)</td><td>Acta de nacimiento o resolución judicial</td></tr>
+            <tr><td>Fallecimiento de cónyuge, conviviente, padres, hijos</td><td>5 días</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallecimiento de hermanos</td><td>3 días</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallecimiento de abuelos, suegros u otros familiares directos</td><td>2 días</td><td>Acta de defunción</td></tr>
+            <tr><td>Mudanza o cambio de domicilio</td><td>1 día</td><td>Constancia / contrato nuevo domicilio</td></tr>
+            <tr><td>Donación de sangre</td><td>1 día</td><td>Constancia del banco de sangre</td></tr>
+            <tr><td>Trámites judiciales o ante organismos oficiales</td><td>Horas necesarias (hasta 1 día)</td><td>Citación o constancia del organismo</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Comunicar al jefe inmediato la situación con la mayor anticipación posible.</li>
+          <li>Completar el <strong>Formulario de Licencia Especial</strong> disponible en la Dirección de Personal.</li>
+          <li>Adjuntar la documentación probatoria requerida.</li>
+          <li>Entregar todo en la Dirección de Personal <strong>dentro de las 48 horas hábiles</strong> de iniciada la licencia (en caso de situaciones imprevistas como fallecimiento).</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- LICENCIA POR ESTUDIO -->
+    <div class="section" id="sec-nod-est">
+      <div class="section-header" onclick="toggleSection('sec-nod-est')">
+        <span class="icon">📚</span>
+        <h2>Licencia por Estudio / Capacitación</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table>
+          <thead><tr><th>Tipo</th><th>Días por año</th><th>Documentación</th></tr></thead>
+          <tbody>
+            <tr><td>Exámenes en establecimientos de enseñanza oficial (primaria, secundaria, terciaria, universitaria)</td><td>Hasta 10 días hábiles</td><td>Constancia de alumno regular + comprobante de examen rendido</td></tr>
+            <tr><td>Capacitación institucional (cursos convocados por la Universidad)</td><td>Según duración del curso</td><td>Nota de convocatoria oficial</td></tr>
+          </tbody>
+        </table>
+        <ol class="steps" style="margin-top:14px;">
+          <li>Solicitar la licencia en la Dirección de Personal con <strong>72 horas de anticipación</strong>, presentando la constancia de alumno regular.</li>
+          <li>Obtener la autorización del jefe inmediato.</li>
+          <li>Rendir el examen y obtener comprobante (certificado de examen rendido, firmado por la institución educativa).</li>
+          <li>Presentar el comprobante de examen en la Dirección de Personal dentro de las <strong>48 horas hábiles</strong> siguientes.</li>
+        </ol>
+        <div class="note"><strong>ℹ️ Nota:</strong> Si el examen no se rindió por causas ajenas al trabajador (suspensión, asueto, etc.), comunicarlo de inmediato a RRHH para regularizar la situación sin descuento.</div>
+      </div>
+    </div>
+  </div><!-- /panel-nod -->
+
+  <!-- CONTACTO -->
+  <div class="contact-box">
+    <h3>📞 Dirección de Recursos Humanos</h3>
+    <div class="contact-item">
+      <span>📍</span><span>[Edificio / Piso / Oficina de RRHH]</span>
+    </div>
+    <div class="contact-item">
+      <span>📞</span><a href="tel:+54">[Teléfono interno o directo]</a>
+    </div>
+    <div class="contact-item">
+      <span>✉️</span><a href="mailto:rrhh@universidad.edu.ar">[rrhh@universidad.edu.ar]</a>
+    </div>
+    <div class="contact-item">
+      <span>🕐</span><span>Lunes a Viernes · [Horario de atención]</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Información orientativa. Los plazos y montos exactos pueden variar según resoluciones internas.<br>
+  Ante dudas, consultá siempre la Dirección de Recursos Humanos.
+</footer>
+
+<script>
+  function switchTab(tab) {
+    const panels = { doc: document.getElementById('panel-doc'), nod: document.getElementById('panel-nod') };
+    const btns   = { doc: document.getElementById('btn-doc'),   nod: document.getElementById('btn-nod')   };
+
+    Object.keys(panels).forEach(k => {
+      panels[k].classList.remove('active');
+      btns[k].classList.remove('active-doc', 'active-nod');
+    });
+
+    panels[tab].classList.add('active');
+    btns[tab].classList.add(tab === 'doc' ? 'active-doc' : 'active-nod');
+  }
+
+  function toggleSection(id) {
+    const sec = document.getElementById(id);
+    sec.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
