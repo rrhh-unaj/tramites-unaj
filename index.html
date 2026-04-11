@@ -137,6 +137,7 @@
     }
     .tab-btn.active-doc { color: var(--negro);   border-color: var(--negro); }
     .tab-btn.active-nod { color: var(--celeste); border-color: var(--celeste); }
+    .tab-btn.active-trans { color: #2563eb; border-color: #2563eb; }
 
     /* ── MAIN ── */
     main { padding: 16px; max-width: 700px; margin: 0 auto; }
@@ -307,6 +308,7 @@
 <div class="tabs">
   <button class="tab-btn active-doc" id="btn-doc" onclick="switchTab('doc')">📘 Docentes</button>
   <button class="tab-btn" id="btn-nod" onclick="switchTab('nod')">📕 No Docentes</button>
+  <button class="tab-btn" id="btn-trans" onclick="switchTab('trans')">⚙️ Procedimientos</button>
 </div>
 
 <main>
@@ -315,8 +317,7 @@
   <div class="panel active" id="panel-doc">
     <div class="intro-card doc">
       <strong>Personal Docente</strong>
-      Profesores, Jefes de Trabajos Prácticos, Auxiliares y demás cargos docentes de la UNAJ.
-      El régimen se rige por el Estatuto Universitario y la normativa de la paritaria docente nacional.
+      Profesores, JTPs, Auxiliares y demás cargos docentes de la UNAJ. Régimen: Estatuto Universitario y Convenio Colectivo de Trabajo de Docentes de las Universidades Nacionales.
     </div>
 
     <div class="section open" id="sd-vac">
@@ -324,21 +325,21 @@
         <span class="icon">🏖️</span><h2>Vacaciones Anuales</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Art. 45. La licencia anual ordinaria se acuerda por año vencido, con goce íntegro de haberes. La antigüedad se computa al 31 de diciembre, considerando los años de servicio en todos los niveles del sistema educativo.</p>
         <table>
-          <thead><tr><th>Antigüedad en la UNAJ</th><th>Días hábiles</th></tr></thead>
+          <thead><tr><th>Antigüedad del docente</th><th>Días corridos</th></tr></thead>
           <tbody>
-            <tr><td>Hasta 5 años</td><td>21 días</td></tr>
-            <tr><td>De 5 a 10 años</td><td>28 días</td></tr>
-            <tr><td>Más de 10 años</td><td>35 días</td></tr>
+            <tr><td>Hasta 15 años</td><td>30 días corridos (coincidentes con receso estival)</td></tr>
+            <tr><td>Más de 15 años</td><td>45 días corridos (fraccionable en dos períodos; el primero no menor a 30 días en receso estival)</td></tr>
           </tbody>
         </table>
         <ol class="steps">
-          <li>Acordar el período con el titular de cátedra o Director de Departamento antes del 30 de noviembre.</li>
-          <li>Completar el formulario de solicitud de licencia vacacional (disponible en RRHH o en el portal institucional).</li>
-          <li>Presentar en la Dirección de Personal con al menos <strong>15 días hábiles de anticipación</strong>.</li>
+          <li>Acordar el período con el titular de cátedra o Director de Departamento. Comunicar con <strong>45 días corridos de anticipación</strong>.</li>
+          <li>Completar el formulario de solicitud de licencia vacacional (RRHH o portal institucional).</li>
+          <li>Presentar en la Dirección de Personal.</li>
           <li>Aguardar la resolución aprobatoria. Las vacaciones no se inician sin autorización formal.</li>
         </ol>
-        <div class="note">⚠️ <strong>Importante:</strong> Los docentes con cargo a tiempo completo deben coordinar el goce de vacaciones durante los recesos oficiales (verano e invierno), salvo excepciones autorizadas por el Decano/Rector.</div>
+        <div class="note">⚠️ <strong>Importante:</strong> Los docentes a tiempo completo coordinan vacaciones durante los recesos oficiales, salvo excepciones del Decano/Rector. La licencia no gozada no puede acumularse con la siguiente; debe gozarse hasta el 30/11 de cada año. No se computan el receso invernal ni otros recesos distintos del estival.</div>
       </div>
     </div>
 
@@ -347,21 +348,29 @@
         <span class="icon">🏥</span><h2>Licencia por Enfermedad / Médica</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Arts. 46 y 47</p>
+        <p style="font-size:0.87rem;margin-top:6px;"><strong>a) Afecciones de corto tratamiento:</strong> Hasta <strong>45 días corridos</strong> por año calendario (continuos o discontinuos), con percepción íntegra de haberes, por afecciones o lesiones inculpables, incluidas operaciones quirúrgicas menores. Vencido este plazo, cualquier otra licencia será sin goce de haberes, salvo largo tratamiento.</p>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>b) Afecciones de largo tratamiento:</strong></p>
         <table>
-          <thead><tr><th>Situación</th><th>Duración máxima con haberes</th></tr></thead>
+          <thead><tr><th>Período</th><th>Goce de haberes</th></tr></thead>
           <tbody>
-            <tr><td>Enfermedad común (hasta 10 años de antigüedad)</td><td>3 meses continuos o alternados/año</td></tr>
-            <tr><td>Enfermedad común (más de 10 años)</td><td>6 meses continuos o alternados/año</td></tr>
-            <tr><td>Enfermedad de larga duración (crónica/grave)</td><td>Hasta 2 años – consultar RRHH</td></tr>
+            <tr><td>Primeros 2 años</td><td>100% de haberes</td></tr>
+            <tr><td>Tercer año</td><td>50% de haberes</td></tr>
+            <tr><td>Cuarto año</td><td>Sin goce de haberes</td></tr>
           </tbody>
         </table>
+        <p style="font-size:0.87rem;margin-top:8px;">Para acceder, agotar previamente los 45 días de corto tratamiento. Al reintegrarse agotado el máximo, no podrá usar nueva licencia de este tipo hasta pasados 3 años.</p>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>c) Accidente de trabajo / Enfermedad profesional:</strong> Cubierto según Ley de Riesgos del Trabajo (Ley 24.557). Licencia desde que el daño impide las tareas hasta el alta médica firme.</p>
+        <p style="font-size:0.87rem;margin-top:10px;font-weight:700;">Procedimiento para licencia por enfermedad de corto tratamiento:</p>
         <ol class="steps">
-          <li>Notificar al responsable de cátedra o departamento el <strong>mismo día de la ausencia</strong>, antes del horario de ingreso.</li>
-          <li>Presentar el certificado médico en la Dirección de Personal dentro de las <strong>48 horas hábiles</strong> de iniciada la licencia.</li>
-          <li>Si la licencia supera los <strong>3 días corridos</strong>, la UNAJ puede convocar a una junta médica oficial.</li>
-          <li>Al reintegrarse: presentar certificado de alta médica antes de retomar el cargo.</li>
+          <li>Notificar al responsable de cátedra y enviar correo a <strong>saludocupacional@unaj.edu.ar</strong> hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular actualizados.</li>
+          <li>Si el estado de salud lo impide, un familiar o persona de contacto podrá notificar. El superior informará a RRHH.</li>
+          <li>RRHH recopila solicitudes y solicita intervención de <strong>Medicina Laboral</strong>.</li>
+          <li>Medicina Laboral evalúa (videollamada, visita o centro médico) y emite resolución.</li>
+          <li>RRHH comunica la resolución a la jefatura.</li>
+          <li>Al reintegrarse: presentar certificado de alta médica.</li>
         </ol>
-        <div class="note">⚠️ <strong>Importante:</strong> El certificado debe indicar diagnóstico (puede ser en clave CIE), fecha de inicio y días de reposo. Sin certificado, la ausencia se registra como inasistencia injustificada.</div>
+        <div class="note">⚠️ <strong>Importante:</strong> El certificado debe indicar diagnóstico (CIE), fecha de inicio y días de reposo. Sin certificado = inasistencia injustificada. En caso de rechazo del certificado, interviene Junta Médica tripartita (Art. 47). Hasta el dictamen, la prescripción del docente se considera vigente.</div>
       </div>
     </div>
 
@@ -370,24 +379,31 @@
         <span class="icon">📋</span><h2>Licencias Especiales</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Art. 48</p>
         <table>
-          <thead><tr><th>Motivo</th><th>Días hábiles</th><th>Documentación</th></tr></thead>
+          <thead><tr><th>Motivo</th><th>Duración</th><th>Documentación</th></tr></thead>
           <tbody>
-            <tr><td>Matrimonio</td><td>10 días</td><td>Partida de matrimonio / acta</td></tr>
-            <tr><td>Nacimiento / adopción de hijo/a</td><td>5 días</td><td>Acta de nacimiento / resolución judicial</td></tr>
-            <tr><td>Fallecimiento de cónyuge, conviviente, padres, hijos</td><td>5 días</td><td>Acta de defunción</td></tr>
-            <tr><td>Fallecimiento de hermanos</td><td>3 días</td><td>Acta de defunción</td></tr>
-            <tr><td>Fallecimiento de abuelos, suegros u otros</td><td>1 día</td><td>Acta de defunción</td></tr>
-            <tr><td>Mudanza</td><td>1 día</td><td>Contrato / escritura nuevo domicilio</td></tr>
-            <tr><td>Donación de sangre</td><td>1 día</td><td>Constancia del banco de sangre</td></tr>
+            <tr><td>Maternidad (persona gestante)</td><td>90 días corridos (45 pre + 45 post; preparto reducible a mín. 30 días)</td><td>Certificado médico con fecha presunta de parto</td></tr>
+            <tr><td>Nacimiento – padre/madre no gestante</td><td>15 días corridos (fraccionable: 5 pre + 10 post)</td><td>Acta de nacimiento</td></tr>
+            <tr><td>Licencia post maternidad</td><td>90 días corridos adicionales</td><td>Solicitud ante RRHH</td></tr>
+            <tr><td>Adopción</td><td>60 días corridos desde la guarda judicial</td><td>Resolución judicial</td></tr>
+            <tr><td>Licencia post adopción</td><td>90 días corridos</td><td>Resolución judicial</td></tr>
+            <tr><td>Interrupción del embarazo</td><td>20 días corridos</td><td>Certificado médico</td></tr>
+            <tr><td>Matrimonio / Unión civil</td><td>10 días hábiles</td><td>Acta de matrimonio / Unión civil</td></tr>
+            <tr><td>Matrimonio de hijo/a</td><td>2 días hábiles</td><td>Acta de matrimonio</td></tr>
+            <tr><td>Fallecimiento: cónyuge o 1° grado consanguíneo</td><td>7 días corridos</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallecimiento: 2° grado consang. y afines 1° y 2°</td><td>5 días corridos</td><td>Acta de defunción</td></tr>
+            <tr><td>Atención hijos menores (por fallec. cónyuge, hijos ≤12 años o con discapacidad)</td><td>Hasta 6 meses corridos</td><td>Acta defunción + partida nacimiento</td></tr>
+            <tr><td>Atención de enfermos en grupo familiar</td><td>Hasta 30 días corridos/año (prorrog. 6 meses para 1° grado/cónyuge/conviviente)</td><td>Certificado médico del familiar</td></tr>
           </tbody>
         </table>
         <ol class="steps">
-          <li>Avisar al responsable de cátedra o departamento con la mayor anticipación posible.</li>
-          <li>Completar el formulario de licencia especial (disponible en RRHH).</li>
-          <li>Adjuntar la documentación probatoria correspondiente.</li>
-          <li>Presentar todo en la Dirección de Personal <strong>dentro de los 3 días hábiles</strong> de iniciada la licencia.</li>
+          <li>Avisar al responsable de cátedra con la mayor anticipación posible.</li>
+          <li>Completar formulario de licencia especial (RRHH).</li>
+          <li>Adjuntar documentación probatoria.</li>
+          <li>Presentar en Dirección de Personal dentro de los 3 días hábiles de iniciada la licencia.</li>
         </ol>
+        <div class="note">⚠️ <strong>Importante:</strong> Parto múltiple: el postparto se amplía 10 días corridos por cada alumbramiento posterior al primero. En ningún caso la acumulación pre+postparto supera 180 días.</div>
       </div>
     </div>
 
@@ -396,23 +412,82 @@
         <span class="icon">📚</span><h2>Licencia por Estudio / Capacitación</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Art. 49, inc. I d) y e)</p>
         <table>
           <thead><tr><th>Tipo</th><th>Días/año</th><th>Documentación</th></tr></thead>
           <tbody>
-            <tr><td>Exámenes (carrera de grado o posgrado)</td><td>Hasta 10 días háb.</td><td>Constancia de alumno regular + comprobante de examen</td></tr>
-            <tr><td>Jornadas / congresos institucionales</td><td>Según evento</td><td>Programa y constancia de participación</td></tr>
-            <tr><td>Becas o comisiones de estudio</td><td>Variable</td><td>Resolución aprobatoria + convenio</td></tr>
+            <tr><td>Exámenes (grado/posgrado)</td><td>Hasta 28 días laborales/año (máx. 5 por final, 3 por parcial)</td><td>Constancia alumno regular + comprobante examen</td></tr>
+            <tr><td>Concursos docentes universitarios</td><td>Hasta 3 días por prueba de oposición</td><td>Constancia de inscripción</td></tr>
+            <tr><td>Razones de estudio (interés institucional)</td><td>Hasta 1 año (renovable por 1 año más)</td><td>Resolución de interés + convenio</td></tr>
+            <tr><td>Jornadas/congresos</td><td>Según evento, con o sin goce según autorización</td><td>Programa + constancia + autorización</td></tr>
           </tbody>
         </table>
         <ol class="steps">
-          <li>Presentar en RRHH la constancia de alumno regular con <strong>72 hs de anticipación</strong>.</li>
-          <li>Solicitar autorización de ausencia firmada por el Director de Departamento.</li>
-          <li>Presentar comprobante de examen rendido dentro de las <strong>48 hs hábiles</strong> de haberlo rendido.</li>
-          <li>Para jornadas o congresos: adjuntar programa del evento y nota de autorización del superior.</li>
+          <li>Presentar constancia de alumno regular con <strong>72 hs. de anticipación</strong>.</li>
+          <li>Solicitar autorización firmada por el Director de Departamento.</li>
+          <li>Presentar comprobante de examen rendido dentro de los <strong>5 días hábiles</strong> posteriores.</li>
         </ol>
-        <div class="note">ℹ️ <strong>Nota:</strong> Los docentes-investigadores pueden tener disposiciones adicionales según el Reglamento de Investigación y Posgrado de su Instituto.</div>
+        <div class="note">ℹ️ <strong>Nota:</strong> El docente que goce de licencia por estudio con haberes está obligado a prestar servicios en la UNAJ por un período igual al beneficio gozado; caso contrario, deberá reintegrar los haberes percibidos.</div>
       </div>
     </div>
+
+    <div class="section" id="sd-ext">
+      <div class="section-header" onclick="toggleSection('sd-ext')">
+        <span class="icon">📄</span><h2>Licencias Extraordinarias sin Goce de Haberes</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Art. 49, inc. II</p>
+        <table>
+          <thead><tr><th>Motivo</th><th>Duración</th><th>Requisitos</th></tr></thead>
+          <tbody>
+            <tr><td>Cargo de mayor jerarquía transitorio</td><td>Mientras dure el cargo</td><td>Solicitar con antelación; acreditar designación</td></tr>
+            <tr><td>Razones particulares</td><td>30 días/año de servicio (acumulable hasta 6 meses)</td><td>Antigüedad mín. 2 años ininterrumpidos</td></tr>
+            <tr><td>Unidad familiar (cónyuge a +100 km)</td><td>Duración de la función oficial (mín. 60 días)</td><td>Acreditar destino del cónyuge</td></tr>
+            <tr><td>Excedencia (post maternidad/adopción)</td><td>3 meses</td><td>Haber gozado licencia post maternidad/adopción</td></tr>
+          </tbody>
+        </table>
+        <div class="note">⚠️ <strong>Importante:</strong> Para razones particulares, el reintegro anticipado requiere solicitud con 30 días de anticipación. El término no utilizado no es acumulable en nuevos períodos.</div>
+      </div>
+    </div>
+
+    <div class="section" id="sd-inas">
+      <div class="section-header" onclick="toggleSection('sd-inas')">
+        <span class="icon">📅</span><h2>Justificación de Inasistencias</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Art. 50</p>
+        <p style="font-size:0.87rem;margin-top:6px;font-weight:700;">Con goce de haberes:</p>
+        <table>
+          <thead><tr><th>Motivo</th><th>Límite</th></tr></thead>
+          <tbody>
+            <tr><td>Donación de sangre</td><td>1 día (con certificación médica)</td></tr>
+            <tr><td>Reconocimientos médicos obligatorios UNAJ</td><td>Según constancia</td></tr>
+            <tr><td>Razones particulares</td><td>6 días laborales o 12 medias jornadas/año (máx. 2 días o 4 medias/mes). Comunicación previa</td></tr>
+            <tr><td>Fuerza mayor</td><td>Mientras persista la imposibilidad (debidamente justificada)</td></tr>
+            <tr><td>Jurado de tesis, mesas examinadoras, comisiones evaluadoras en otras IIUNN</td><td>Según corresponda (comunicación previa)</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>Sin goce de haberes:</strong> Hasta <strong>6 días/año</strong> (máx. 2/mes) por razones atendibles no encuadradas en los casos anteriores.</p>
+      </div>
+    </div>
+
+    <div class="section" id="sd-fran">
+      <div class="section-header" onclick="toggleSection('sd-fran')">
+        <span class="icon">⏱️</span><h2>Franquicias</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT Docentes, Art. 51</p>
+        <table>
+          <thead><tr><th>Franquicia</th><th>Detalle</th></tr></thead>
+          <tbody>
+            <tr><td>Reducción horaria por lactancia</td><td>1 hora por cada 5 hs de jornada, por 240 días desde nacimiento (prorrogable a 365). En adopción: hasta los 8 meses del niño.</td></tr>
+            <tr><td>Actividades gremiales</td><td>Hasta 20% de dedicación horaria mientras dure el mandato sindical</td></tr>
+            <tr><td>Consejos Directivos / Superior</td><td>Franquicia en dedicación según reglamentación institucional</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div><!-- /panel-doc -->
 
 
@@ -420,9 +495,7 @@
   <div class="panel" id="panel-nod">
     <div class="intro-card nod">
       <strong>Personal No Docente</strong>
-      Administrativos, técnicos, maestranza y demás trabajadores no docentes de la UNAJ.
-      El régimen se rige por el <em>Convenio Colectivo de Trabajo del Sector No Docente de las
-      Universidades Nacionales</em> (Decreto Nº 366/06 y actualizaciones).
+      Administrativos, técnicos, maestranza y demás trabajadores no docentes de la UNAJ. Régimen: CCT para el Sector No Docente de las Instituciones Universitarias Nacionales (Decreto 366/06 y actualizaciones).
     </div>
 
     <div class="section open" id="sn-vac">
@@ -430,23 +503,25 @@
         <span class="icon">🏖️</span><h2>Vacaciones Anuales</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT No Docente, Arts. 79 a 90. Descanso anual remunerado. La antigüedad se computa al 31 de diciembre del año correspondiente.</p>
         <table>
-          <thead><tr><th>Antigüedad</th><th>Días hábiles</th></tr></thead>
+          <thead><tr><th>Antigüedad</th><th>Días corridos</th></tr></thead>
           <tbody>
-            <tr><td>Hasta 5 años</td><td>15 días</td></tr>
-            <tr><td>De 5 a 10 años</td><td>20 días</td></tr>
-            <tr><td>De 10 a 20 años</td><td>25 días</td></tr>
-            <tr><td>Más de 20 años</td><td>30 días</td></tr>
+            <tr><td>Hasta 5 años</td><td>20 días corridos</td></tr>
+            <tr><td>De 5 a 10 años</td><td>25 días corridos</td></tr>
+            <tr><td>De 10 a 15 años</td><td>30 días corridos</td></tr>
+            <tr><td>De 15 a 20 años</td><td>35 días corridos (fraccionable en 2 períodos, mín. 30 días c/u)</td></tr>
+            <tr><td>Más de 20 años</td><td>40 días corridos (fraccionable en 2 períodos, mín. 30 días c/u)</td></tr>
           </tbody>
         </table>
         <ol class="steps">
-          <li>Acordar el período con el jefe inmediato, teniendo en cuenta las necesidades del servicio.</li>
-          <li>Completar el <strong>Formulario de Solicitud de Licencia Vacacional</strong> disponible en RRHH o en el portal institucional.</li>
-          <li>Presentarlo con <strong>al menos 10 días hábiles de anticipación</strong>.</li>
-          <li>Aguardar la aprobación formal. No se puede iniciar el período sin autorización escrita.</li>
-          <li>Las vacaciones deben gozarse dentro del año en que se generan (o hasta el 30 de abril del año siguiente en casos especiales).</li>
+          <li>Acordar con el jefe inmediato según necesidades del servicio.</li>
+          <li>Completar Formulario de Solicitud de Licencia Vacacional (RRHH o portal).</li>
+          <li>Comunicar fecha de inicio por escrito con <strong>45 días corridos de anticipación</strong>.</li>
+          <li>Aguardar aprobación formal. No iniciar sin autorización escrita.</li>
+          <li>Se otorga entre el 15/12 y el 28/02, salvo excepciones fundadas.</li>
         </ol>
-        <div class="note">⚠️ <strong>Importante:</strong> Las vacaciones no pueden fraccionarse en períodos menores a 7 días hábiles continuos. Para fraccionamiento especial, se requiere autorización de RRHH.</div>
+        <div class="note">⚠️ <strong>Importante:</strong> No puede acumularse ni compensarse en dinero. Se interrumpe solo por salud (5+ días), maternidad, fallecimiento de familiar, hijo menor y otros supuestos del régimen. Preferencia al trabajador con hijos en edad escolar.</div>
       </div>
     </div>
 
@@ -455,22 +530,30 @@
         <span class="icon">🏥</span><h2>Licencia por Enfermedad / Médica</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT No Docente, Arts. 91 a 96</p>
+        <p style="font-size:0.87rem;margin-top:6px;"><strong>a) Afecciones de corto tratamiento:</strong> Hasta <strong>45 días corridos</strong>/año calendario (continuos o discontinuos), con haberes íntegros, por afecciones inculpables incluidas cirugías menores.</p>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>b) Afecciones de largo tratamiento:</strong></p>
         <table>
-          <thead><tr><th>Situación</th><th>Duración con goce de haberes</th></tr></thead>
+          <thead><tr><th>Período</th><th>Goce de haberes</th></tr></thead>
           <tbody>
-            <tr><td>Enfermedad de corta duración</td><td>Hasta 6 meses por año</td></tr>
-            <tr><td>Enfermedad prolongada o grave</td><td>Hasta 12 meses (con junta médica)</td></tr>
-            <tr><td>Accidente de trabajo / enfermedad profesional</td><td>Hasta alta médica – coordinado con ART</td></tr>
+            <tr><td>Hasta 1 año</td><td>100% de haberes</td></tr>
+            <tr><td>Hasta 6 meses adicionales (1° prórroga)</td><td>100% de haberes</td></tr>
+            <tr><td>Hasta 6 meses adicionales (2° prórroga)</td><td>50% de haberes</td></tr>
+            <tr><td>Hasta 2 períodos de 6 meses más</td><td>Sin goce de haberes</td></tr>
           </tbody>
         </table>
+        <p style="font-size:0.87rem;margin-top:8px;">Al reintegrarse, no podrá usar nueva licencia de largo tratamiento hasta pasados 3 años.</p>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>c) Accidente de trabajo / Enfermedad profesional:</strong> Cubierto según Ley de Riesgos del Trabajo. Notificar de inmediato a RRHH para activación de ART.</p>
+        <p style="font-size:0.87rem;margin-top:10px;font-weight:700;">Procedimiento para licencia por enfermedad de corto tratamiento:</p>
         <ol class="steps">
-          <li>Notificar la ausencia al jefe inmediato y a la Dirección de Personal <strong>antes del inicio del turno</strong> o lo antes posible.</li>
-          <li>Presentar el certificado médico en la Dirección de Personal dentro de las <strong>48 horas hábiles</strong>. Debe incluir diagnóstico (puede ser codificado), pronóstico y días de reposo.</li>
-          <li>Si la licencia supera los <strong>2 días corridos</strong>, RRHH puede solicitar control por médico oficial de la UNAJ.</li>
-          <li>Al reintegrarse: presentar <strong>certificado de alta médica</strong> antes de tomar el puesto.</li>
-          <li>En caso de accidente de trabajo: notificar de inmediato a RRHH para la activación de la ART.</li>
+          <li>Notificar al jefe inmediato y enviar correo a <strong>saludocupacional@unaj.edu.ar</strong> hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular.</li>
+          <li>Si el estado de salud lo impide, un familiar o persona de contacto podrá notificar.</li>
+          <li>RRHH solicita intervención de Medicina Laboral.</li>
+          <li>Medicina Laboral evalúa y emite resolución.</li>
+          <li>RRHH comunica la resolución a la jefatura.</li>
+          <li>Al reintegrarse: certificado de alta médica.</li>
         </ol>
-        <div class="note">⚠️ <strong>Importante:</strong> La ausencia sin certificado será registrada como inasistencia injustificada y puede generar descuento de haberes y medidas disciplinarias.</div>
+        <div class="note">⚠️ <strong>Importante:</strong> Certificado con diagnóstico, pronóstico y días de reposo. Sin certificado = inasistencia injustificada con descuento de haberes y posibles medidas disciplinarias. Si se retira habiendo trabajado menos de media jornada: día de licencia; más de media jornada: permiso de salida.</div>
       </div>
     </div>
 
@@ -479,58 +562,195 @@
         <span class="icon">📋</span><h2>Licencias Especiales</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT No Docente, Arts. 97, 98 y 105</p>
         <table>
-          <thead><tr><th>Motivo</th><th>Días hábiles</th><th>Documentación</th></tr></thead>
+          <thead><tr><th>Motivo</th><th>Duración</th><th>Documentación</th></tr></thead>
           <tbody>
-            <tr><td>Matrimonio</td><td>10 días</td><td>Acta / partida de matrimonio</td></tr>
-            <tr><td>Nacimiento / adopción de hijo/a</td><td>5 días</td><td>Acta de nacimiento / resolución judicial</td></tr>
-            <tr><td>Fallecimiento de cónyuge, conviviente, padres, hijos</td><td>5 días</td><td>Acta de defunción</td></tr>
-            <tr><td>Fallecimiento de hermanos</td><td>3 días</td><td>Acta de defunción</td></tr>
-            <tr><td>Fallecimiento de abuelos, suegros u otros familiares</td><td>2 días</td><td>Acta de defunción</td></tr>
-            <tr><td>Mudanza / cambio de domicilio</td><td>1 día</td><td>Constancia / contrato nuevo domicilio</td></tr>
+            <tr><td>Nacimiento / padre o madre no gestante / adopción</td><td>15 días corridos</td><td>Acta nacimiento / resolución judicial</td></tr>
+            <tr><td>Matrimonio</td><td>10 días hábiles</td><td>Acta de matrimonio</td></tr>
+            <tr><td>Matrimonio de hijo/a</td><td>2 días</td><td>Acta de matrimonio</td></tr>
+            <tr><td>Fallec. cónyuge o 1° grado consang.</td><td>10 días (+15 si tiene hijos menores)</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallec. 2° grado consanguíneo</td><td>5 días</td><td>Acta de defunción</td></tr>
+            <tr><td>Fallec. pariente político 1° y 2° grado</td><td>1 día (coincide con deceso/sepelio)</td><td>Acta de defunción</td></tr>
             <tr><td>Donación de sangre</td><td>1 día</td><td>Constancia banco de sangre</td></tr>
-            <tr><td>Trámites judiciales / organismos oficiales</td><td>Hasta 1 día</td><td>Citación o constancia del organismo</td></tr>
+            <tr><td>Examen enseñanza media</td><td>20 días háb./año (máx. 4/examen)</td><td>Constancia + comprobante</td></tr>
+            <tr><td>Examen enseñanza superior</td><td>24 días háb./año (máx. 5/examen)</td><td>Constancia + comprobante</td></tr>
+            <tr><td>Estudio (interés institucional, antig. 4 años)</td><td>Hasta 30 días háb./año</td><td>Declaración de interés</td></tr>
+            <tr><td>Violencia de género</td><td>Extraordinaria con goce de haberes</td><td>Constancia de denuncia (5 días háb.)</td></tr>
+            <tr><td>Actividades deportivas no rentadas</td><td>Hasta 15 días/año</td><td>Constancia participación</td></tr>
+            <tr><td>Candidatura a cargo electivo</td><td>30 días corridos previos a la elección</td><td>Oficialización de candidatura</td></tr>
+            <tr><td>Cargo de mayor jerarquía</td><td>Mientras dure, sin goce de haberes</td><td>Acreditar designación</td></tr>
           </tbody>
         </table>
         <ol class="steps">
-          <li>Comunicar al jefe inmediato la situación con la mayor anticipación posible.</li>
-          <li>Completar el <strong>Formulario de Licencia Especial</strong> disponible en la Dirección de Personal.</li>
-          <li>Adjuntar la documentación probatoria requerida.</li>
-          <li>Entregar todo en la Dirección de Personal <strong>dentro de las 48 horas hábiles</strong> de iniciada la licencia.</li>
+          <li>Comunicar al jefe inmediato con la mayor anticipación posible.</li>
+          <li>Completar Formulario de Licencia Especial (Dirección de Personal).</li>
+          <li>Adjuntar documentación probatoria.</li>
+          <li>Acreditar dentro de las <strong>72 horas</strong> del reintegro. Para matrimonio, exámenes y estudio: solicitar con <strong>20 días de anticipación</strong>.</li>
         </ol>
       </div>
     </div>
 
-    <div class="section" id="sn-est">
-      <div class="section-header" onclick="toggleSection('sn-est')">
-        <span class="icon">📚</span><h2>Licencia por Estudio / Capacitación</h2><span class="chevron">▼</span>
+    <div class="section" id="sn-part">
+      <div class="section-header" onclick="toggleSection('sn-part')">
+        <span class="icon">🗂️</span><h2>Licencia por Razones Particulares</h2><span class="chevron">▼</span>
       </div>
       <div class="section-body">
-        <table>
-          <thead><tr><th>Tipo</th><th>Días/año</th><th>Documentación</th></tr></thead>
-          <tbody>
-            <tr><td>Exámenes en establecimientos de enseñanza oficial</td><td>Hasta 10 días háb.</td><td>Constancia de alumno regular + comprobante de examen</td></tr>
-            <tr><td>Capacitación institucional (cursos UNAJ)</td><td>Según duración</td><td>Nota de convocatoria oficial</td></tr>
-          </tbody>
-        </table>
-        <ol class="steps">
-          <li>Solicitar la licencia en la Dirección de Personal con <strong>72 horas de anticipación</strong>, presentando la constancia de alumno regular.</li>
-          <li>Obtener la autorización del jefe inmediato.</li>
-          <li>Rendir el examen y obtener comprobante firmado por la institución educativa.</li>
-          <li>Presentar el comprobante en la Dirección de Personal dentro de las <strong>48 horas hábiles</strong> siguientes.</li>
-        </ol>
-        <div class="note">ℹ️ <strong>Nota:</strong> Si el examen no se rindió por causas ajenas al trabajador, comunicarlo inmediatamente a RRHH para regularizar la situación sin descuento.</div>
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT No Docente, Arts. 100, 101 y 102</p>
+        <p style="font-size:0.87rem;margin-top:6px;"><strong>Sin goce de haberes (Art. 100):</strong> Antigüedad mínima de <strong>10 años</strong>. Hasta <strong>12 meses</strong> por decenio, en forma continua o en no más de 2 períodos, siempre que no se opongan razones de servicio.</p>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>Permisos particulares con goce de haberes (Art. 101):</strong> Hasta <strong>6 jornadas/año</strong> (máx. 2/mes) para trámites personales fuera de horario laboral. Aviso con <strong>24 hs. de antelación</strong>, sujeto a autorización.</p>
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>Permisos excepcionales con goce de haberes (Art. 102):</strong> Hasta <strong>5/año</strong>, otorgados por el responsable directo del área, después de cumplir al menos 2 horas de jornada, por razones atendibles.</p>
+        <div class="note">⚠️ <strong>Importante:</strong> El uso de licencias por razones particulares (Arts. 100, 101 y 102) es considerado en la evaluación anual del agente.</div>
       </div>
     </div>
+
+    <div class="section" id="sn-fam">
+      <div class="section-header" onclick="toggleSection('sn-fam')">
+        <span class="icon">🏠</span><h2>Atención de Familiar Enfermo</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT No Docente, Art. 104</p>
+        <p style="font-size:0.87rem;margin-top:8px;">Hasta <strong>30 días corridos/año</strong> (continuo o fraccionado) con goce de haberes. Extensible hasta <strong>100 días adicionales</strong> con goce solo para parientes de 1° grado, cónyuge, conviviente o ligado por unión civil. Requiere declaración jurada del grupo familiar y certificado médico con identidad del paciente y necesidad de atención personalizada, verificado por el servicio médico de la UNAJ.</p>
+      </div>
+    </div>
+
+    <div class="section" id="sn-mat">
+      <div class="section-header" onclick="toggleSection('sn-mat')">
+        <span class="icon">👶</span><h2>Maternidad, Adopción y Lactancia</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Ref.: CCT No Docente, Arts. 106, 107, 109 y 110</p>
+        <table>
+          <thead><tr><th>Concepto</th><th>Duración / Detalle</th></tr></thead>
+          <tbody>
+            <tr><td>Maternidad (persona gestante)</td><td>90 días (45 pre + 45 post; preparto reducible a mín. 30 días). Parto múltiple: +15 días corridos por alumbramiento adicional.</td></tr>
+            <tr><td>Licencia post maternidad</td><td>90 días corridos con goce de haberes (no aplica nacimiento sin vida). Acumulación no puede superar 180 días.</td></tr>
+            <tr><td>Adopción</td><td>45 días corridos con goce de haberes desde tenencia. Luego se asimila a maternidad.</td></tr>
+            <tr><td>Lactancia</td><td>2 permisos de 45 min/día (180 días post maternidad); luego 2 de 30 min (180 días más; prorrogable a 1 año).</td></tr>
+            <tr><td>Excedencia</td><td>Hasta 6 meses sin goce (requiere +1 año antigüedad). Alternativa: resolución con 50% del mejor salario de últimos 10 años por año de antigüedad.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div><!-- /panel-nod -->
+
+
+  <!-- ══════════ PROCEDIMIENTOS TRANSVERSALES ══════════ -->
+  <div class="panel" id="panel-trans">
+    <div class="intro-card" style="background:#f0f7ff;border-left:5px solid var(--celeste);">
+      <strong>Procedimientos Transversales</strong>
+      Los siguientes procedimientos aplican tanto al personal docente como no docente, según corresponda.
+    </div>
+
+    <div class="section open" id="st-inas">
+      <div class="section-header" onclick="toggleSection('st-inas')">
+        <span class="icon">📝</span><h2>Procedimiento de Inasistencias</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>Objetivo:</strong> Garantizar la comunicación oportuna y el correcto registro ante la inasistencia de un agente.</p>
+        <p style="font-size:0.87rem;"><strong>Alcance:</strong> Todo el personal docente y no docente, cualquiera sea su modalidad de contratación.</p>
+        <p style="font-size:0.87rem;margin-top:6px;font-weight:700;">Modo de proceder:</p>
+        <ol class="steps">
+          <li>Completar el <strong>formulario de inasistencia</strong> e informar a la máxima autoridad del área con <strong>24 horas de antelación</strong>.</li>
+          <li>El formulario debe ser firmado por el personal y contar con la conformidad de la máxima autoridad del área.</li>
+          <li>Presentar en RRHH o enviar escaneado a <strong>recursoshumanos@unaj.edu.ar</strong>.</li>
+        </ol>
+        <div class="note">ℹ️ <strong>Nota:</strong> Si la inasistencia se produce antes del aviso, igualmente completar y remitir el formulario con ambas firmas. <strong>No incluye licencias por tiempo prolongado.</strong></div>
+        <p style="font-size:0.79rem;color:#777;margin-top:8px;">Arts. aplicables – Docentes: 45; 48 a) f) y h); 49 inc. I a) a d); 50 inc. 1 a) a e). No Docentes: 84; 97 a) a i); 101; 102; 106; 110.</p>
+      </div>
+    </div>
+
+    <div class="section" id="st-recmed">
+      <div class="section-header" onclick="toggleSection('st-recmed')">
+        <span class="icon">🩺</span><h2>Procedimiento de Solicitud de Reconocimiento Médico</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>Objetivo:</strong> Establecer el procedimiento ante inasistencia por salud, garantizando comunicación entre agente, responsable, RRHH y Medicina Laboral.</p>
+        <p style="font-size:0.87rem;"><strong>Alcance:</strong> Personal de planta permanente y/o transitoria.</p>
+        <p style="font-size:0.87rem;margin-top:6px;font-weight:700;">Modo de proceder:</p>
+        <ol class="steps">
+          <li>El agente informa su inasistencia y solicita reconocimiento médico por correo al responsable de comunicaciones del área y a <strong>saludocupacional@unaj.edu.ar</strong>, hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular. Correos hasta las 11:00 hs se evalúan el mismo día.</li>
+          <li>Si el estado de salud lo impide, un familiar o persona de contacto podrá notificar. El superior informará a RRHH. Una vez recuperado, el agente remitirá la notificación formal. <em>(Si hay imposibilidad técnica, informar al superior, quien notificará a RRHH.)</em></li>
+          <li>RRHH recopila solicitudes del día y solicita intervención de <strong>Medicina Laboral</strong>.</li>
+          <li>Medicina Laboral evalúa (videollamada, visita o centro médico) y emite resolución.</li>
+          <li>RRHH comunica la resolución (justificada / no justificada) a la jefatura.</li>
+        </ol>
+        <div class="note">⚠️ <strong>Importante:</strong> En caso de cuidado de familiar enfermo, adjuntar certificado médico con detalle de la condición de salud.</div>
+        <p style="font-size:0.79rem;color:#777;margin-top:8px;">Arts. aplicables – Docentes: 46 a), b) y c); 48 g). No Docentes: 91; 92; 104.</p>
+      </div>
+    </div>
+
+    <div class="section" id="st-remp">
+      <div class="section-header" onclick="toggleSection('st-remp')">
+        <span class="icon">🔄</span><h2>Reemplazos, Suplencias y Bajas de Dedicación Docente</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.87rem;margin-top:8px;"><strong>Objetivo:</strong> Método estandarizado para reemplazos, suplencias y bajas de dedicación docente.</p>
+        <p style="font-size:0.87rem;"><strong>Alcance:</strong> Desde la generación de la necesidad hasta la Resolución de Designación.</p>
+        <p style="font-size:0.87rem;margin-top:6px;"><strong>Suplencias:</strong> Períodos cortos (fecha inicio-fin, no superan el año lectivo 31/12). Se solicitan hasta el 31/10 del período lectivo, por: licencia por enfermedad, maternidad, estudio o sin goce de haberes por razones particulares.</p>
+        <p style="font-size:0.87rem;margin-top:6px;"><strong>Reemplazos:</strong> Largo plazo, por: renuncia, jubilación, fallecimiento, o licencia sin goce por cargo de mayor jerarquía (requiere certificación de servicios anual).</p>
+        <p style="font-size:0.87rem;margin-top:8px;font-weight:700;">Circuito de convocatoria (prioridad):</p>
+        <ol class="steps" style="counter-reset:none;">
+          <li style="counter-increment:none;"><span style="background:var(--negro);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;margin-right:8px;flex-shrink:0;">1°</span>En la materia.</li>
+          <li style="counter-increment:none;"><span style="background:var(--negro);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;margin-right:8px;flex-shrink:0;">2°</span>Materias similares del Instituto.</li>
+          <li style="counter-increment:none;"><span style="background:var(--negro);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;margin-right:8px;flex-shrink:0;">3°</span>Materias similares de la UNAJ.</li>
+          <li style="counter-increment:none;"><span style="background:var(--negro);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;margin-right:8px;flex-shrink:0;">4°</span>Egresados / No docentes profesionales / Externos.</li>
+        </ol>
+        <p style="font-size:0.87rem;margin-top:8px;font-weight:700;">Plan de Acción:</p>
+        <ol class="steps">
+          <li>Abrir expediente electrónico <strong>SUDOCU</strong>: "Designación Docente en Planta Interina, [Nombre], DNI [N°], REEMPLAZO/SUPLENCIA de [Nombre], DNI [N°], Instituto de [...]".</li>
+          <li>Incorporar nota de solicitud: dependencia, dedicación, categoría (según criterios), período (según calendario administrativo), motivo. Adjuntar nota del docente que reduce y nota de aceptación del suplente. Firma del Director de Instituto o Sec. Académica.</li>
+          <li>Remitir expediente a <strong>Dirección de Asuntos Docentes</strong>.</li>
+          <li>Asuntos Docentes verifica y da conformidad (o devuelve para adecuación). Firma autorizada y remite al <strong>DAP</strong>.</li>
+          <li>Carga en <strong>Sistema MAPUCHE</strong>.</li>
+          <li>RRHH archiva.</li>
+        </ol>
+        <div class="note">⚠️ <strong>Importante:</strong> Para liquidar en término, RRHH debe contar con el expediente SUDOCU <strong>antes del día 15 de cada mes</strong>. Todas las firmas deben estar visibles en el expediente. Se abre un expediente por cada persona.</div>
+      </div>
+    </div>
+
+    <div class="section" id="st-anexo">
+      <div class="section-header" onclick="toggleSection('st-anexo')">
+        <span class="icon">📧</span><h2>Responsables de Comunicaciones por Dependencia</h2><span class="chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:0.82rem;color:#555;margin-top:8px;">Correos electrónicos de los responsables de comunicaciones de cada dependencia, para copiar en notificaciones de inasistencia por enfermedad:</p>
+        <table>
+          <thead><tr><th>Dependencia</th><th>Correo electrónico</th></tr></thead>
+          <tbody>
+            <tr><td>Rectorado</td><td>rectorado@unaj.edu.ar</td></tr>
+            <tr><td>Consejo Superior</td><td>jgonzalez@unaj.edu.ar</td></tr>
+            <tr><td>Jefatura de Gabinete</td><td>ofernandez@unaj.edu.ar</td></tr>
+            <tr><td>Secretaría General</td><td>tpoccioni@unaj.edu.ar</td></tr>
+            <tr><td>Secretaría de Política y Territorio</td><td>aalbornoz@unaj.edu.ar</td></tr>
+            <tr><td>Sec. de Investigación y Vinculación Tecnológica</td><td>lpucheta@unaj.edu.ar</td></tr>
+            <tr><td>Inst. Ciencias Sociales y Administración</td><td>sdepiero@unaj.edu.ar</td></tr>
+            <tr><td>Inst. Estudios Iniciales</td><td>sabregu@unaj.edu.ar</td></tr>
+            <tr><td>Inst. Ciencias de la Salud</td><td>acoronel@unaj.edu.ar</td></tr>
+            <tr><td>Inst. de Ingeniería</td><td>secretariaing@unaj.edu.ar</td></tr>
+            <tr><td>Obra Social</td><td>ctprieto@unaj.edu.ar</td></tr>
+            <tr><td>Dirección General de Posgrado</td><td>posgrado@unaj.edu.ar</td></tr>
+            <tr><td>Secretaría Académica</td><td>msalas@unaj.edu.ar</td></tr>
+            <tr><td>Dirección de Asuntos Legales</td><td>asuntoslegales@unaj.edu.ar</td></tr>
+            <tr><td>Secretaría Económico Financiera</td><td>sef@unaj.edu.ar</td></tr>
+            <tr><td>Dir. Gral. Aseguramiento de la Calidad</td><td>dgac@unaj.edu.ar</td></tr>
+            <tr><td>Subsec. Comunicación y Relaciones</td><td>ruffo@unaj.edu.ar</td></tr>
+            <tr><td>Unidad de Auditoría Interna</td><td>jnaso@unaj.edu.ar</td></tr>
+            <tr><td>Dir. Despacho, Mesa de Entradas y Salidas</td><td>dir.despacho@unaj.edu.ar</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /panel-trans -->
 
   <!-- CONTACTO -->
   <div class="contact-box">
     <h3>📞 Dirección de Recursos Humanos – UNAJ</h3>
-    <div class="contact-item">📍 <span>[Edificio / Piso / Oficina de RRHH]</span></div>
-    <div class="contact-item">📞 <a href="tel:+54">[Teléfono interno o directo]</a></div>
-    <div class="contact-item">✉️ <a href="mailto:rrhh@unaj.edu.ar">[rrhh@unaj.edu.ar]</a></div>
-    <div class="contact-item">🕐 <span>Lunes a Viernes · [Horario de atención]</span></div>
+    <div class="contact-item">✉️ <a href="mailto:recursoshumanos@unaj.edu.ar">recursoshumanos@unaj.edu.ar</a> · <a href="mailto:saludocupacional@unaj.edu.ar">saludocupacional@unaj.edu.ar</a></div>
+    <div class="contact-item">🕐 Lunes a Viernes · Horario de atención a consultar</div>
+    <div style="font-size:0.75rem;color:#888;margin-top:8px;">Dirección General de Coordinación Operativa – UNAJ. Información orientativa basada en la normativa vigente y los CCT de Docentes y No Docentes de las Universidades Nacionales. Ante cualquier duda, consultá con la Dirección de RRHH.</div>
   </div>
 
 </main>
@@ -542,12 +762,13 @@
 
 <script>
   function switchTab(tab) {
-    ['doc','nod'].forEach(k => {
+    ['doc','nod','trans'].forEach(k => {
       document.getElementById('panel-' + k).classList.remove('active');
-      document.getElementById('btn-' + k).classList.remove('active-doc','active-nod');
+      document.getElementById('btn-' + k).classList.remove('active-doc','active-nod','active-trans');
     });
     document.getElementById('panel-' + tab).classList.add('active');
-    document.getElementById('btn-' + tab).classList.add(tab === 'doc' ? 'active-doc' : 'active-nod');
+    const cls = tab === 'doc' ? 'active-doc' : (tab === 'nod' ? 'active-nod' : 'active-trans');
+    document.getElementById('btn-' + tab).classList.add(cls);
   }
   function toggleSection(id) {
     document.getElementById(id).classList.toggle('open');
