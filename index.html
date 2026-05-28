@@ -313,17 +313,19 @@
     #panel-nod .steps li::before { background: var(--celeste); }
 
     /* ── TABLE ── */
-    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 10px; table-layout: fixed; }
     th {
       text-align: left;
       padding: 7px 9px;
       font-size: 0.77rem;
       font-weight: 700;
       color: var(--blanco);
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     #panel-doc th { background: var(--negro); }
     #panel-nod th { background: var(--celeste); }
-    td { padding: 7px 9px; border-bottom: 1px solid #e8edf4; vertical-align: top; }
+    td { padding: 7px 9px; border-bottom: 1px solid #e8edf4; vertical-align: top; word-break: break-word; overflow-wrap: break-word; }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: #f8fafc; }
 
@@ -353,6 +355,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      overflow-wrap: break-word;
       gap: 8px;
       margin-bottom: 6px;
       font-size: 0.87rem;
