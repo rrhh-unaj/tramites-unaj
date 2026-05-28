@@ -287,18 +287,19 @@
     /* ── STEPS ── */
     .steps { margin-top: 12px; padding-left: 0; list-style: none; counter-reset: step; }
     .steps li {
-      display: flex;
-      gap: 11px;
+      position: relative;
+      padding-left: 35px;
       margin-bottom: 9px;
       counter-increment: step;
       font-size: 0.88rem;
       overflow-wrap: break-word;
       word-break: break-word;
-      min-width: 0;
     }
     .steps li::before {
       content: counter(step);
-      flex-shrink: 0;
+      position: absolute;
+      left: 0;
+      top: 2px;
       width: 24px; height: 24px;
       border-radius: 50%;
       display: flex;
@@ -307,7 +308,6 @@
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--blanco);
-      margin-top: 2px;
     }
     #panel-doc .steps li::before { background: var(--negro); }
     #panel-nod .steps li::before { background: var(--celeste); }
