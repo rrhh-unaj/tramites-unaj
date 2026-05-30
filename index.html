@@ -33,33 +33,42 @@
     }
 
     /* HEADER */
-    header {
-      background: var(--white);
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    .header-strip {
+      background: #2c2c2c;
+      padding: 5px 16px;
     }
-    .header-photo {
-      position: absolute; right: 0; top: 0; height: 100%; width: 55%;
-      background-image: url('edificio.jpg');
-      background-size: cover; background-position: center left;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.9) 100%);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.9) 100%);
-      opacity: 0.55;
+    .header-strip-inner {
+      max-width: 700px; margin: 0 auto;
+      font-size: 0.72rem; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.02em;
+    }
+    header {
+      background: linear-gradient(135deg, #1a2232 0%, #243550 100%);
+      border-bottom: 3px solid var(--celeste);
     }
     .header-inner {
-      position: relative; z-index: 2; max-width: 700px; margin: 0 auto;
-      padding: 12px 16px;
-      display: flex; align-items: flex-end; gap: 14px;
+      max-width: 700px; margin: 0 auto;
+      padding: 13px 16px;
+      display: flex; align-items: center; gap: 14px;
     }
-    .header-logo img { height: 56px; width: auto; display: block; }
+    .header-logo {
+      flex-shrink: 0;
+      width: 58px; height: 58px;
+      background: var(--white);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.22);
+    }
+    .header-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .header-title {
-      font-size: 1.05rem; font-weight: 700; color: var(--navy);
-      line-height: 1; letter-spacing: -0.01em;
-      white-space: nowrap; padding-bottom: 3px;
+      font-size: 1rem; font-weight: 700; color: var(--white);
+      line-height: 1.25; letter-spacing: -0.01em;
     }
-    .header-accent { display: none; }
+    .header-accent {
+      display: block; width: 24px; height: 2px;
+      background: var(--celeste); margin-top: 7px;
+    }
 
     /* DOWNLOAD BAR */
     .download-bar {
@@ -76,13 +85,15 @@
     }
     .dl-btn {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--white); color: var(--navy); font-family: inherit;
-      font-size: 0.82rem; font-weight: 700; text-decoration: none;
-      padding: 7px 15px; border-radius: 5px; border: none; cursor: pointer;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15); transition: background .15s;
+      font-family: inherit; font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; padding: 7px 15px; border-radius: 5px;
+      border: none; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      transition: opacity .15s;
+      background: var(--white); color: var(--navy);
     }
-    .dl-btn:hover { background: #e8f7fd; }
+    .dl-btn:hover { opacity: 0.88; }
     .dl-btn i { font-size: 0.95rem; }
+    .dl-btn-dark { background: var(--navy); color: var(--white); }
 
     /* CONVENIOS DROPDOWN */
     .conv-wrap { position: relative; display: inline-block; }
@@ -133,9 +144,9 @@
       border: 0.5px solid var(--border); border-left-width: 3px;
       padding: 10px 13px; margin-bottom: 10px;
     }
-    .intro-card.doc   { border-left-color: var(--navy); }
-    .intro-card.nod   { border-left-color: var(--celeste); }
-    .intro-card.trans { border-left-color: var(--blue); }
+    .intro-card.doc   { border-left-color: var(--navy);    background: rgba(26,34,50,0.04); }
+    .intro-card.nod   { border-left-color: var(--celeste); background: rgba(41,171,226,0.07); }
+    .intro-card.trans { border-left-color: var(--blue);    background: rgba(37,99,235,0.06); }
     .intro-card strong { display: block; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
     .intro-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin: 0; }
     .intro-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
@@ -229,18 +240,23 @@
 </head>
 <body>
 
+<div class="header-strip">
+  <div class="header-strip-inner">Universidad Nacional Arturo Jauretche</div>
+</div>
 <header>
-  <div class="header-photo" aria-hidden="true"></div>
   <div class="header-inner">
     <div class="header-logo">
-      <img src="logo-unaj-transparent.png" alt="Universidad Nacional Arturo Jauretche" />
+      <img src="Unaj.jpg" alt="Universidad Nacional Arturo Jauretche" />
     </div>
-    <span class="header-title">Guía de Trámites del Personal</span>
+    <div>
+      <span class="header-title">Guía de Trámites<br>del Personal</span>
+      <div class="header-accent"></div>
+    </div>
   </div>
 </header>
 
 <div class="download-bar">
-  <a href="tramites-personal.pdf" download class="dl-btn">
+  <a href="tramites-personal.pdf" download class="dl-btn dl-btn-dark">
     <i class="ti ti-download"></i> Descargar guía en PDF
   </a>
   <div class="conv-wrap">
@@ -272,7 +288,7 @@
 <div class="panel active" id="panel-doc" role="tabpanel">
   <div class="intro-card doc">
     <strong>Personal Docente</strong>
-    <p>Categorías Titular, Asociado, Adjunto, JTP y Ayudante. Régimen: Estatuto Universitario y CCT de Docentes de las Universidades Nacionales.</p>
+    <p>Categorías Titular, Asociado, Adjunto, JTP y Ayudante.</p>
     <div class="intro-tags"><span class="intro-tag">CCT Docentes</span><span class="intro-tag">Estatuto UNAJ</span></div>
   </div>
 
@@ -484,7 +500,7 @@
 <div class="panel" id="panel-nod" role="tabpanel">
   <div class="intro-card nod">
     <strong>Personal No Docente</strong>
-    <p>Administrativos, técnicos, maestranza y demás trabajadores no docentes. Régimen: CCT para el Sector No Docente de las Instituciones Universitarias Nacionales (Decreto 366/06 y actualizaciones).</p>
+    <p>Administrativos, técnicos, maestranza y demás trabajadores no docentes.</p>
     <div class="intro-tags"><span class="intro-tag">CCT No Docentes</span><span class="intro-tag">Decreto 366/06</span></div>
   </div>
 
@@ -659,7 +675,7 @@
 <div class="panel" id="panel-trans" role="tabpanel">
   <div class="intro-card trans">
     <strong>Procedimientos Transversales</strong>
-    <p>Los siguientes procedimientos aplican tanto al personal docente como no docente, según corresponda.</p>
+    <div class="intro-tags"><span class="intro-tag">Docentes</span><span class="intro-tag">No Docentes</span></div>
   </div>
 
   <div class="section open" id="st-inas">
