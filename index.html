@@ -33,15 +33,6 @@
     }
 
     /* HEADER */
-    .header-strip {
-      background: #2c2c2c;
-      padding: 5px 16px;
-    }
-    .header-strip-inner {
-      max-width: 700px; margin: 0 auto;
-      font-size: 0.72rem; color: rgba(255,255,255,0.65);
-      letter-spacing: 0.02em;
-    }
     header {
       background: linear-gradient(135deg, #1a2232 0%, #243550 100%);
       border-bottom: 3px solid var(--celeste);
@@ -49,24 +40,25 @@
     .header-inner {
       max-width: 700px; margin: 0 auto;
       padding: 13px 16px;
-      display: flex; align-items: center; gap: 14px;
+      display: flex; align-items: center; gap: 16px;
     }
     .header-logo {
       flex-shrink: 0;
-      width: 58px; height: 58px;
+      height: 54px;
       background: var(--white);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
       box-shadow: 0 1px 8px rgba(0,0,0,0.22);
+      padding: 5px 8px;
     }
-    .header-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .header-logo img { height: 100%; width: auto; object-fit: contain; display: block; }
     .header-title {
       font-size: 1rem; font-weight: 700; color: var(--white);
       line-height: 1.25; letter-spacing: -0.01em;
     }
     .header-accent {
-      display: block; width: 24px; height: 2px;
+      display: block; width: 38px; height: 2px;
       background: var(--celeste); margin-top: 7px;
     }
 
@@ -240,16 +232,13 @@
 </head>
 <body>
 
-<div class="header-strip">
-  <div class="header-strip-inner">Universidad Nacional Arturo Jauretche</div>
-</div>
 <header>
   <div class="header-inner">
     <div class="header-logo">
-      <img src="Unaj.jpg" alt="Universidad Nacional Arturo Jauretche" />
+      <img src="logo-unaj-2016-01.jpg" alt="Universidad Nacional Arturo Jauretche" />
     </div>
     <div>
-      <span class="header-title">Guía de Trámites<br>del Personal</span>
+      <span class="header-title">GUÍA DE TRÁMITES<br>DEL PERSONAL</span>
       <div class="header-accent"></div>
     </div>
   </div>
