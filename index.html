@@ -3,358 +3,693 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trámites del Personal – UNAJ</title>
+  <title>Guía de Trámites del Personal – UNAJ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
   <style>
     :root {
-      --navy:    #1a2232;
-      --celeste: #29ABE2;
-      --blue:    #2563eb;
-      --bg:      #f4f7fb;
-      --border:  #dde3ef;
-      --border2: #c2cde6;
-      --text:    #1e2332;
-      --muted:   #6b7280;
-      --soft:    #9faab8;
-      --white:   #ffffff;
+      --navy: #1b2a4a;
+      --unaj-blue: #1a7ab5;
+      --nd-dark: #2d3142;
+      --trans-copper: #b06228;
+      --bg: #f5f6f9;
+      --surface: #ffffff;
+      --text: #1d2939;
+      --text-2: #5d6b7e;
+      --text-3: #8c95a6;
+      --border: #e0e4eb;
+      --border-2: #cdd3de;
+      --focus: #1a7ab520;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --navy: #c5d0e6;
+        --unaj-blue: #4da8d9;
+        --nd-dark: #b0b8cc;
+        --trans-copper: #d89050;
+        --bg: #0f1117;
+        --surface: #1a1d26;
+        --text: #e1e4ea;
+        --text-2: #9aa1b0;
+        --text-3: #6b7280;
+        --border: #2a2e3a;
+        --border-2: #363b4a;
+        --focus: #4da8d920;
+      }
+    }
+    :root[data-theme="dark"] {
+      --navy: #c5d0e6;
+      --unaj-blue: #4da8d9;
+      --nd-dark: #b0b8cc;
+      --trans-copper: #d89050;
+      --bg: #0f1117;
+      --surface: #1a1d26;
+      --text: #e1e4ea;
+      --text-2: #9aa1b0;
+      --text-3: #6b7280;
+      --border: #2a2e3a;
+      --border-2: #363b4a;
+      --focus: #4da8d920;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+      font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       font-size: 15px;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, #1a2232 0%, #243550 100%);
-      border-bottom: 3px solid var(--celeste);
+    /* ═══════════════════════════════════════
+       HEADER — foto institucional con overlay
+       ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      background: #1b2a4a;
+      overflow: hidden;
     }
-    .header-inner {
-      max-width: 700px; margin: 0 auto;
-      padding: 13px 16px;
-      display: flex; align-items: center; gap: 16px;
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('edificio.jpg') center 30% / cover no-repeat;
+      opacity: 0.18;
+      filter: grayscale(0.4);
     }
-    .header-logo {
+    .hero-inner {
+      position: relative;
+      max-width: 880px; margin: 0 auto;
+      padding: 28px 20px 24px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .hero-logo {
       flex-shrink: 0;
-      height: 54px;
-      background: var(--white);
-      border-radius: 8px;
+      width: 52px; height: 52px;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.22);
-      padding: 5px 8px;
     }
-    .header-logo img { height: 100%; width: auto; object-fit: contain; display: block; }
-    .header-title {
-      font-size: 1rem; font-weight: 700; color: var(--white);
-      line-height: 1.25; letter-spacing: -0.01em;
+    .hero-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-uni {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
     }
-    .header-accent {
-      display: block; width: 38px; height: 2px;
-      background: var(--celeste); margin-top: 7px;
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .hero-org {
+      margin-top: 10px;
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .hero-org span {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .hero-org span:first-child {
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
     }
 
-    /* DOWNLOAD BAR */
-    .download-bar {
-      background: var(--celeste);
-      background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 14px,
-        rgba(255,255,255,0.09) 14px,
-        rgba(255,255,255,0.09) 28px
-      );
-      padding: 10px 16px;
-      display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    /* Downloads — barra discreta */
+    .dl-bar {
+      position: relative;
+      background: #152238;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .dl-bar-inner {
+      max-width: 880px; margin: 0 auto;
+      padding: 8px 20px;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
     .dl-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: inherit; font-size: 0.82rem; font-weight: 700;
-      text-decoration: none; padding: 7px 15px; border-radius: 5px;
-      border: none; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-      transition: opacity .15s;
-      background: var(--white); color: var(--navy);
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      text-decoration: none;
+      padding: 6px 14px; border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
     }
-    .dl-btn:hover { opacity: 0.88; }
-    .dl-btn i { font-size: 0.95rem; }
-    .dl-btn-dark { background: var(--navy); color: var(--white); }
-
-    /* CONVENIOS DROPDOWN */
-    .conv-wrap { position: relative; display: inline-block; }
+    .dl-btn:hover {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .dl-btn i { font-size: 0.88rem; }
+    .dl-sep {
+      width: 1px; height: 18px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 4px;
+    }
+    .conv-wrap { position: relative; display: inline-flex; }
     .conv-menu {
-      display: none; position: absolute; top: calc(100% + 6px); left: 50%;
-      transform: translateX(-50%); background: var(--white); border-radius: 7px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.18); min-width: 250px; z-index: 100; overflow: hidden;
+      display: none; position: absolute; top: calc(100% + 8px); left: 0;
+      background: var(--surface); border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2); min-width: 270px; z-index: 100;
+      overflow: hidden; border: 1px solid var(--border);
     }
     .conv-menu.open { display: block; }
     .conv-menu a {
-      display: flex; align-items: center; gap: 9px; padding: 11px 14px;
-      font-size: 0.84rem; font-weight: 600; color: var(--text);
-      text-decoration: none; border-bottom: 1px solid #eee; transition: background .15s;
+      display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+      font-size: 0.82rem; font-weight: 600; color: var(--text);
+      text-decoration: none; border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
     }
     .conv-menu a:last-child { border-bottom: none; }
-    .conv-menu a:hover { background: #f0f8ff; }
-    .tag { font-size: 0.67rem; font-weight: 700; padding: 2px 7px; border-radius: 3px; color: var(--white); flex-shrink: 0; }
-    .tag-doc { background: var(--navy); }
-    .tag-nod { background: var(--celeste); }
+    .conv-menu a:hover { background: var(--focus); }
+    .tag {
+      font-size: 0.65rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 3px;
+      color: #fff; flex-shrink: 0;
+      line-height: 1.4;
+    }
+    .tag-doc { background: #1a7ab5; }
+    .tag-nod { background: #2d3142; }
 
-    /* TABS */
-    .tabs {
-      display: flex; background: var(--white); border-bottom: 1px solid var(--border);
+    /* ═══════════════════════════════════════
+       TABS
+       ═══════════════════════════════════════ */
+    .tabs-wrap {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       position: sticky; top: 0; z-index: 10;
     }
-    .tab-btn {
-      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-      padding: 8px 6px 6px; border: none; background: transparent; cursor: pointer;
-      color: var(--soft); font-family: inherit; font-size: 0.77rem; font-weight: 500;
-      border-bottom: 2.5px solid transparent; transition: color .2s, border-color .2s;
+    .tabs {
+      max-width: 880px; margin: 0 auto;
+      display: flex;
     }
-    .tab-btn i { font-size: 1.1rem; }
-    .tab-btn.act-doc  { color: var(--navy);    border-color: var(--navy);    font-weight: 700; background: rgba(26,34,50,0.05); }
-    .tab-btn.act-nod  { color: var(--celeste); border-color: var(--celeste); font-weight: 700; background: rgba(41,171,226,0.08); }
-    .tab-btn.act-trans{ color: var(--blue);    border-color: var(--blue);    font-weight: 700; background: rgba(37,99,235,0.07); }
-    .tab-btn.act-doc i  { color: var(--navy); }
-    .tab-btn.act-nod i  { color: var(--celeste); }
-    .tab-btn.act-trans i{ color: var(--blue); }
+    .tab-btn {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 13px 8px;
+      border: none; background: transparent; cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.84rem; font-weight: 500;
+      color: var(--text-3);
+      border-bottom: 2.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .tab-btn i { font-size: 1.05rem; }
+    .tab-btn:hover { color: var(--text-2); background: var(--focus); }
 
-    /* MAIN */
-    main { max-width: 700px; margin: 0 auto; padding: 12px 10px 24px; }
+    .tab-btn.active-doc {
+      color: #1a7ab5; border-color: #1a7ab5; font-weight: 700;
+      background: rgba(26,122,181,0.05);
+    }
+    .tab-btn.active-doc i { color: #1a7ab5; }
+    .tab-btn.active-nod {
+      color: #2d3142; border-color: #2d3142; font-weight: 700;
+      background: rgba(45,49,66,0.04);
+    }
+    .tab-btn.active-nod i { color: #2d3142; }
+    .tab-btn.active-trans {
+      color: #b06228; border-color: #b06228; font-weight: 700;
+      background: rgba(176,98,40,0.05);
+    }
+    .tab-btn.active-trans i { color: #b06228; }
+
+    /* Badge de conteo */
+    .tab-count {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      background: var(--border);
+      color: var(--text-3);
+      padding: 1px 6px; border-radius: 8px;
+      line-height: 1.4;
+    }
+    .tab-btn.active-doc .tab-count { background: rgba(26,122,181,0.12); color: #1a7ab5; }
+    .tab-btn.active-nod .tab-count { background: rgba(45,49,66,0.1); color: #2d3142; }
+    .tab-btn.active-trans .tab-count { background: rgba(176,98,40,0.1); color: #b06228; }
+
+    /* ═══════════════════════════════════════
+       MAIN
+       ═══════════════════════════════════════ */
+    main {
+      max-width: 880px; margin: 0 auto;
+      padding: 16px 20px 32px;
+    }
     .panel { display: none; }
     .panel.active { display: block; }
 
-    /* INTRO CARD */
-    .intro-card {
-      background: var(--white); border-radius: 0 7px 7px 0;
-      border: 0.5px solid var(--border); border-left-width: 3px;
-      padding: 10px 13px; margin-bottom: 10px;
+    /* Intro card */
+    .intro {
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--unaj-blue);
+      padding: 14px 18px;
+      margin-bottom: 12px;
     }
-    .intro-card.doc   { border-left-color: var(--navy);    background: rgba(26,34,50,0.04); }
-    .intro-card.nod   { border-left-color: var(--celeste); background: rgba(41,171,226,0.07); }
-    .intro-card.trans { border-left-color: var(--blue);    background: rgba(37,99,235,0.06); }
-    .intro-card strong { display: block; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .intro-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin: 0; }
-    .intro-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
-    .intro-tag { font-size: 0.71rem; background: #eef2f8; color: #4a5568; padding: 2px 8px; border-radius: 3px; font-weight: 600; }
+    .intro.nod { border-left-color: var(--nd-dark); }
+    .intro.trans { border-left-color: var(--trans-copper); }
+    .intro-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .intro p {
+      font-size: 0.84rem; color: var(--text-2);
+      line-height: 1.55; margin: 0;
+    }
+    .intro-badges {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
+    }
+    .intro-badge {
+      font-size: 0.71rem; font-weight: 600;
+      background: var(--bg); color: var(--text-2);
+      padding: 3px 9px; border-radius: 4px;
+      border: 1px solid var(--border);
+    }
 
-    /* SECTION CARD */
-    .section { background: var(--white); border-radius: 7px; border: 0.5px solid var(--border); margin-bottom: 5px; overflow: hidden; }
-    .section.open { border-color: var(--border2); }
-    .section-header { display: flex; align-items: center; gap: 10px; padding: 11px 13px; cursor: pointer; user-select: none; transition: background .15s; }
-    .section-header:hover { background: #fafbfe; }
-    .section.open .section-header { border-bottom: 0.5px solid var(--border); background: #fafbfe; }
-    .section-icon { font-size: 1.2rem; flex-shrink: 0; color: var(--celeste); }
-    #panel-trans .section-icon { color: var(--blue); }
-    .section.open .section-header .section-icon { color: var(--navy); }
-    .section-label { flex: 1; min-width: 0; }
-    .section-title { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text); }
-    .section.open .section-title { font-weight: 700; color: var(--navy); }
-    .section-ref { display: block; font-size: 0.71rem; color: var(--soft); margin-top: 1px; font-weight: 400; }
-    .section-chevron { font-size: 1rem; color: var(--soft); flex-shrink: 0; transition: transform .25s; }
-    .section.open .section-chevron { transform: rotate(180deg); color: #6b7280; }
+    /* ═══════════════════════════════════════
+       ACCORDION SECTIONS
+       ═══════════════════════════════════════ */
+    .sec {
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .sec.open { border-color: var(--border-2); }
 
-    /* SECTION BODY */
-    .section-body { display: none; padding: 12px 13px 14px; background: #fafbfe; }
-    .section.open .section-body { display: block; }
+    .sec-head {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 16px;
+      cursor: pointer; user-select: none;
+      transition: background 0.15s;
+    }
+    .sec-head:hover { background: rgba(0,0,0,0.015); }
+    .sec.open .sec-head {
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,0.015);
+    }
 
-    /* TEXT */
-    .desc { font-size: 0.83rem; color: var(--muted); line-height: 1.55; margin-bottom: 8px; }
-    .desc strong { color: var(--text); }
-    .sublabel { font-size: 0.78rem; font-weight: 700; color: var(--navy); letter-spacing: 0.05em; text-transform: uppercase; margin: 10px 0 6px; }
+    /* Dot de color por sección */
+    .sec-dot {
+      flex-shrink: 0;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--unaj-blue);
+    }
+    #panel-nod .sec-dot { background: var(--nd-dark); }
+    #panel-trans .sec-dot { background: var(--trans-copper); }
 
-    /* STEPS */
-    .steps { list-style: none; counter-reset: step; margin: 10px 0; padding: 0; }
+    .sec-icon {
+      flex-shrink: 0;
+      font-size: 1.15rem;
+      color: var(--text-3);
+      width: 22px; text-align: center;
+    }
+    .sec.open .sec-icon { color: var(--unaj-blue); }
+    #panel-nod .sec.open .sec-icon { color: var(--nd-dark); }
+    #panel-trans .sec.open .sec-icon { color: var(--trans-copper); }
+
+    .sec-label { flex: 1; min-width: 0; }
+    .sec-title {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem; font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .sec.open .sec-title { font-weight: 700; }
+    .sec-ref {
+      display: block;
+      font-size: 0.72rem; color: var(--text-3);
+      margin-top: 2px; font-weight: 400;
+    }
+    .sec-chevron {
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      color: var(--text-3);
+      transition: transform 0.25s ease;
+    }
+    .sec.open .sec-chevron {
+      transform: rotate(180deg);
+      color: var(--text-2);
+    }
+
+    /* Section body */
+    .sec-body {
+      display: none;
+      padding: 16px 18px 18px;
+    }
+    .sec.open .sec-body { display: block; }
+
+    /* ═══════════════════════════════════════
+       CONTENT ELEMENTS
+       ═══════════════════════════════════════ */
+    .desc {
+      font-size: 0.86rem; color: var(--text-2);
+      line-height: 1.6; margin-bottom: 8px;
+    }
+    .desc strong { color: var(--text); font-weight: 600; }
+
+    .sublabel {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--text);
+      margin: 14px 0 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Steps */
+    .steps { list-style: none; counter-reset: step; margin: 12px 0; padding: 0; }
     .steps li {
-      position: relative; padding-left: 30px; margin-bottom: 8px;
-      counter-increment: step; font-size: 0.84rem; color: #374151; line-height: 1.55; overflow-wrap: break-word;
+      position: relative; padding-left: 34px; margin-bottom: 10px;
+      counter-increment: step;
+      font-size: 0.86rem; color: var(--text-2); line-height: 1.6;
+      overflow-wrap: break-word;
     }
     .steps li::before {
-      content: counter(step); position: absolute; left: 0; top: 1px;
-      width: 20px; height: 20px; border-radius: 50%; background: var(--navy);
-      color: var(--white); font-size: 0.71rem; font-weight: 700;
+      content: counter(step);
+      position: absolute; left: 0; top: 2px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--unaj-blue);
+      color: #fff; font-size: 0.72rem; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
     }
-    #panel-nod .steps li::before { background: var(--celeste); }
+    .steps li strong { color: var(--text); }
+    #panel-nod .steps li::before { background: var(--nd-dark); }
+    #panel-trans .steps li::before { background: var(--trans-copper); }
 
-    /* TABLE */
-    table { width: 100%; border-collapse: collapse; font-size: 0.81rem; margin: 10px 0; table-layout: fixed; }
-    th { text-align: left; padding: 7px 9px; font-size: 0.74rem; font-weight: 700; color: var(--white); word-break: break-word; overflow-wrap: break-word; }
-    #panel-doc th, #panel-trans th { background: var(--navy); }
-    #panel-nod th { background: var(--celeste); }
-    td { padding: 7px 9px; border-bottom: 1px solid #e8edf4; vertical-align: top; word-break: break-word; overflow-wrap: break-word; }
+    /* Tables */
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.84rem; margin: 12px 0;
+    }
+    thead th {
+      text-align: left; padding: 9px 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.76rem; font-weight: 600;
+      color: #fff;
+      background: var(--unaj-blue);
+    }
+    thead th:first-child { border-radius: 5px 0 0 0; }
+    thead th:last-child { border-radius: 0 5px 0 0; }
+    #panel-nod thead th { background: var(--nd-dark); }
+    #panel-trans thead th { background: var(--trans-copper); }
+    td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      color: var(--text-2);
+    }
+    td strong { color: var(--text); }
     tr:last-child td { border-bottom: none; }
-    tr:nth-child(even) td { background: #f8fafc; }
+    tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
 
-    /* NOTES */
-    .note { padding: 8px 11px; font-size: 0.81rem; margin-top: 10px; line-height: 1.5; }
-    .note-info { background: #ebf6fd; border-left: 2.5px solid var(--celeste); color: #1a4a6b; }
-    .note-warn { background: #fffbeb; border-left: 2.5px solid #f59e0b; color: #7c5a00; }
+    /* Notes */
+    .note {
+      padding: 10px 14px;
+      font-size: 0.83rem;
+      margin-top: 12px;
+      line-height: 1.55;
+      border-radius: 6px;
+    }
+    .note strong { font-weight: 600; }
+    .note-info {
+      background: rgba(26,122,181,0.06);
+      border-left: 3px solid var(--unaj-blue);
+      color: var(--text-2);
+    }
+    .note-warn {
+      background: rgba(176,98,40,0.06);
+      border-left: 3px solid var(--trans-copper);
+      color: var(--text-2);
+    }
+    .note-warn strong { color: var(--trans-copper); }
 
-    /* INLINE DOWNLOAD */
-    .dl-link { display: inline-flex; align-items: center; gap: 3px; color: var(--celeste); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(41,171,226,0.4); }
-    .dl-link:hover { color: #1a8ab5; }
+    /* Download links inline */
+    .dl-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--unaj-blue); font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(26,122,181,0.3);
+      transition: border-color 0.15s;
+    }
+    .dl-link:hover { border-color: var(--unaj-blue); }
     .dl-link i { font-size: 0.85rem; }
 
-    /* DESKTOP GRID */
-    @media (min-width: 580px) {
-      .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 5px; }
-      .section-grid .section { margin-bottom: 0; }
+    /* ═══════════════════════════════════════
+       CONTACT + FOOTER
+       ═══════════════════════════════════════ */
+    .contact {
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 20px 18px;
+      margin-top: 24px;
+    }
+    .contact-head {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .contact-sub {
+      font-size: 0.78rem; color: var(--text-3);
+      margin-bottom: 14px;
+    }
+    .contact-grid {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.84rem; color: var(--text-2);
+    }
+    .contact-row i { color: var(--unaj-blue); font-size: 1rem; flex-shrink: 0; }
+    .contact-row a {
+      color: var(--unaj-blue); text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .contact-row a:hover { border-color: var(--unaj-blue); }
+    .contact-disclaimer {
+      font-size: 0.74rem; color: var(--text-3);
+      margin-top: 14px; line-height: 1.5;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
     }
 
-    /* CONTACT */
-    .contact-box {
-      background: var(--white); border-radius: 7px; border: 0.5px solid var(--border);
-      border-top: 3px solid var(--navy); padding: 14px 13px; margin-top: 18px; text-align: center;
+    footer {
+      max-width: 880px; margin: 0 auto;
+      padding: 16px 20px;
+      font-size: 0.73rem; color: var(--text-3);
+      line-height: 1.55;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
     }
-    .contact-box h3 { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .contact-item { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 5px; margin-bottom: 5px; font-size: 0.84rem; color: var(--muted); }
-    .contact-item i { color: var(--celeste); }
-    .contact-item a { color: var(--celeste); text-decoration: none; }
-    .contact-item a:hover { text-decoration: underline; }
-    .contact-sep { color: var(--border2); }
+    footer a { color: var(--unaj-blue); text-decoration: none; }
 
-    /* FOOTER */
-    footer { text-align: center; padding: 14px 16px; font-size: 0.72rem; color: var(--soft); margin-top: 4px; border-top: 1px solid var(--border); line-height: 1.6; }
-    footer strong { color: var(--celeste); }
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .hero-inner { padding: 22px 16px 18px; gap: 14px; }
+      .hero-logo { width: 42px; height: 42px; }
+      .hero-title { font-size: 1.2rem; }
+      main { padding: 12px 16px 24px; }
+      .dl-bar-inner { padding: 8px 16px; }
+      .tab-btn { font-size: 0.78rem; padding: 11px 6px; gap: 5px; }
+      .tab-count { display: none; }
+      .sec-head { padding: 12px 14px; gap: 10px; }
+      .sec-body { padding: 14px 14px 16px; }
+      table { font-size: 0.8rem; }
+      th, td { padding: 7px 9px; }
+      footer { flex-direction: column; text-align: center; }
+    }
 
-    @media (max-width: 400px) {
-      table { font-size: 0.76rem; }
-      .header-title { font-size: 1.05rem; }
+    @media (max-width: 380px) {
+      .hero-title { font-size: 1.05rem; }
+      .hero-uni { font-size: 0.72rem; }
+      .tab-btn { font-size: 0.73rem; }
+    }
+
+    /* Print */
+    @media print {
+      .hero-bg { opacity: 0.08; }
+      .dl-bar, .tabs-wrap { display: none; }
+      .sec-body { display: block !important; }
+      .sec { break-inside: avoid; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="header-logo">
-      <img src="logo-unaj-2016-01.jpg" alt="Universidad Nacional Arturo Jauretche" />
+<!-- ════════════════════════════════════════
+     HERO HEADER
+     ════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <img src="favicon-j.png" alt="UNAJ" />
     </div>
-    <div>
-      <span class="header-title">GUÍA DE TRÁMITES<br>DEL PERSONAL</span>
-      <div class="header-accent"></div>
+    <div class="hero-text">
+      <div class="hero-uni">Universidad Nacional Arturo Jauretche</div>
+      <h1 class="hero-title">Guía de Trámites del Personal</h1>
+      <div class="hero-org">
+        <span>Secretaría Económico Financiera</span>
+        <span>Dirección Gral. de Coordinación Operativa - RRHH</span>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="download-bar">
-  <a href="tramites-personal.pdf" download class="dl-btn dl-btn-dark">
-    <i class="ti ti-download"></i> Descargar guía en PDF
-  </a>
-  <div class="conv-wrap">
-    <button class="dl-btn" onclick="toggleConv(event)" aria-expanded="false" id="conv-toggle">
-      <i class="ti ti-download"></i> Convenios Colectivos <i class="ti ti-chevron-down" style="font-size:.8rem;"></i>
-    </button>
-    <div class="conv-menu" id="conv-menu">
-      <a href="CCT docentes.pdf" download><span class="tag tag-doc">DOC</span> CCT Docentes Universitarios</a>
-      <a href="https://drive.google.com/uc?export=download&id=1aGuxqKkS-KR8fuLTVMxFGDMuvpmB4yns" target="_blank" rel="noopener"><span class="tag tag-nod">NOD</span> CCT No Docentes (FATUN – Decreto 366/06)</a>
+<!-- Downloads -->
+<div class="dl-bar">
+  <div class="dl-bar-inner">
+    <a href="tramites personal actualizado.pdf" download class="dl-btn">
+      <i class="ti ti-file-type-pdf"></i> Guía en PDF
+    </a>
+    <div class="dl-sep"></div>
+    <div class="conv-wrap">
+      <button class="dl-btn" onclick="toggleConv(event)" aria-expanded="false" id="conv-toggle">
+        <i class="ti ti-scale"></i> Convenios Colectivos <i class="ti ti-chevron-down" style="font-size:.78rem;margin-left:2px;"></i>
+      </button>
+      <div class="conv-menu" id="conv-menu">
+        <a href="CCT docentes.pdf" download><span class="tag tag-doc">DOC</span> CCT Docentes Universitarios</a>
+        <a href="https://drive.google.com/uc?export=download&id=1aGuxqKkS-KR8fuLTVMxFGDMuvpmB4yns" target="_blank" rel="noopener"><span class="tag tag-nod">N/D</span> CCT Nodocentes – Decreto 366/06</a>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="tabs" role="tablist">
-  <button class="tab-btn act-doc" id="btn-doc" onclick="switchTab('doc')" role="tab" aria-selected="true">
-    <i class="ti ti-book-2"></i>Docentes
-  </button>
-  <button class="tab-btn" id="btn-nod" onclick="switchTab('nod')" role="tab" aria-selected="false">
-    <i class="ti ti-users"></i>No Docentes
-  </button>
-  <button class="tab-btn" id="btn-trans" onclick="switchTab('trans')" role="tab" aria-selected="false">
-    <i class="ti ti-settings"></i>Gestión
-  </button>
-</div>
+<!-- ════════════════════════════════════════
+     TABS
+     ════════════════════════════════════════ -->
+<nav class="tabs-wrap">
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active-doc" id="btn-doc" onclick="switchTab('doc')" role="tab" aria-selected="true">
+      <i class="ti ti-book-2"></i> Docentes <span class="tab-count">6</span>
+    </button>
+    <button class="tab-btn" id="btn-nod" onclick="switchTab('nod')" role="tab" aria-selected="false">
+      <i class="ti ti-users-group"></i> Nodocentes <span class="tab-count">6</span>
+    </button>
+    <button class="tab-btn" id="btn-trans" onclick="switchTab('trans')" role="tab" aria-selected="false">
+      <i class="ti ti-arrows-exchange"></i> Gestión <span class="tab-count">4</span>
+    </button>
+  </div>
+</nav>
 
+<!-- ════════════════════════════════════════
+     CONTENIDO
+     ════════════════════════════════════════ -->
 <main>
 
-<!-- DOCENTES -->
+<!-- ─── DOCENTES ─── -->
 <div class="panel active" id="panel-doc" role="tabpanel">
-  <div class="intro-card doc">
-    <strong>Personal Docente</strong>
-    <p>Categorías Titular, Asociado, Adjunto, JTP y Ayudante.</p>
-    <div class="intro-tags"><span class="intro-tag">CCT Docentes</span><span class="intro-tag">Estatuto UNAJ</span></div>
-  </div>
-
-  <div class="section-grid">
-    <div class="section" id="sd-vac">
-      <div class="section-header" onclick="toggleSection('sd-vac')">
-        <i class="ti ti-calendar section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Vacaciones Anuales</span>
-          <span class="section-ref">Art. 45 — CCT Docentes</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
-      </div>
-      <div class="section-body">
-        <p class="desc">Licencia por año vencido con goce íntegro de haberes. Antigüedad al 31/12, considerando todos los niveles del sistema educativo.</p>
-        <table>
-          <thead><tr><th>Antigüedad</th><th>Días corridos</th></tr></thead>
-          <tbody>
-            <tr><td>Hasta 15 años</td><td>30 días (receso estival)</td></tr>
-            <tr><td>Más de 15 años</td><td>45 días (fraccionable; 1° período no menor a 30 días en receso estival)</td></tr>
-          </tbody>
-        </table>
-        <ol class="steps">
-          <li>Acordar con el titular de cátedra o Director de Departamento. Comunicar con <strong>45 días corridos de anticipación</strong>.</li>
-          <li>Completar el formulario de solicitud de licencia vacacional (RRHH o portal institucional).</li>
-          <li>Presentar en la Dirección de Personal.</li>
-          <li>Aguardar resolución aprobatoria. Las vacaciones no se inician sin autorización formal.</li>
-        </ol>
-        <div class="note note-warn"><strong>Importante:</strong> La licencia no gozada no puede acumularse; debe gozarse hasta el 30/11. No se computan el receso invernal ni otros recesos distintos del estival.</div>
-      </div>
-    </div>
-
-    <div class="section" id="sd-med">
-      <div class="section-header" onclick="toggleSection('sd-med')">
-        <i class="ti ti-stethoscope section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Licencia por Enfermedad / Médica</span>
-          <span class="section-ref">Arts. 46–47 — CCT Docentes</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
-      </div>
-      <div class="section-body">
-        <p class="desc"><strong>a) Corto tratamiento:</strong> Hasta <strong>45 días corridos</strong>/año con haberes íntegros.</p>
-        <p class="desc"><strong>b) Largo tratamiento:</strong></p>
-        <table>
-          <thead><tr><th>Período</th><th>Haberes</th></tr></thead>
-          <tbody>
-            <tr><td>Primeros 2 años</td><td>100%</td></tr>
-            <tr><td>Tercer año</td><td>50%</td></tr>
-            <tr><td>Cuarto año</td><td>Sin goce</td></tr>
-          </tbody>
-        </table>
-        <p class="desc"><strong>c) Accidente / Enf. profesional:</strong> Ley 24.557. Licencia desde el daño hasta el alta médica firme.</p>
-        <p class="sublabel">Procedimiento — corto tratamiento</p>
-        <ol class="steps">
-          <li>Notificar al responsable de cátedra y enviar correo a <strong>saludocupacional@unaj.edu.ar</strong> hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular.</li>
-          <li>Si el estado de salud lo impide, un familiar o persona de contacto puede notificar.</li>
-          <li>RRHH solicita intervención de <strong>Medicina Laboral</strong>.</li>
-          <li>Medicina Laboral evalúa (videollamada, visita o centro médico) y emite resolución.</li>
-          <li>RRHH comunica la resolución a la jefatura.</li>
-          <li>Al reintegrarse: presentar certificado de alta médica.</li>
-        </ol>
-        <div class="note note-warn"><strong>Importante:</strong> El certificado debe indicar diagnóstico (CIE), fecha de inicio y días de reposo. Sin certificado = inasistencia injustificada. En rechazo, interviene Junta Médica tripartita (Art. 47).</div>
-      </div>
+  <div class="intro">
+    <div class="intro-title">Personal Docente</div>
+    <p>Categorías Titular, Asociado, Adjunto, JTP y Ayudante de Primera.</p>
+    <div class="intro-badges">
+      <span class="intro-badge">CCT Docentes</span>
+      <span class="intro-badge">Estatuto UNAJ</span>
     </div>
   </div>
 
-  <div class="section" id="sd-esp">
-    <div class="section-header" onclick="toggleSection('sd-esp')">
-      <i class="ti ti-clipboard-list section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Licencias Especiales</span>
-        <span class="section-ref">Art. 48 — CCT Docentes</span>
+  <!-- Vacaciones -->
+  <div class="sec" id="sd-vac">
+    <div class="sec-head" onclick="toggle('sd-vac')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-calendar sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Vacaciones Anuales</span>
+        <span class="sec-ref">Art. 45 — CCT Docentes</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
+      <p class="desc">Licencia por año vencido con goce íntegro de haberes. Antigüedad al 31/12, considerando todos los niveles del sistema educativo.</p>
+      <table>
+        <thead><tr><th>Antigüedad</th><th>Días corridos</th></tr></thead>
+        <tbody>
+          <tr><td>Hasta 15 años</td><td>30 días (receso estival)</td></tr>
+          <tr><td>Más de 15 años</td><td>45 días (fraccionable; 1° período no menor a 30 días en receso estival)</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps">
+        <li>Acordar con el titular de cátedra o Director de Departamento. Comunicar con <strong>45 días corridos de anticipación</strong>.</li>
+        <li>Completar el formulario de solicitud de licencia vacacional (RRHH o portal institucional).</li>
+        <li>Presentar en la Dirección de Personal.</li>
+        <li>Aguardar resolución aprobatoria. Las vacaciones no se inician sin autorización formal.</li>
+      </ol>
+      <div class="note note-warn"><strong>Importante:</strong> La licencia no gozada no puede acumularse; debe gozarse hasta el 30/11. No se computan el receso invernal ni otros recesos distintos del estival.</div>
+    </div>
+  </div>
+
+  <!-- Enfermedad / Médica -->
+  <div class="sec" id="sd-med">
+    <div class="sec-head" onclick="toggle('sd-med')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-stethoscope sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencia por Enfermedad / Médica</span>
+        <span class="sec-ref">Arts. 46–47 — CCT Docentes</span>
+      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
+    </div>
+    <div class="sec-body">
+      <p class="desc"><strong>a) Corto tratamiento:</strong> Hasta <strong>45 días corridos</strong>/año con haberes íntegros.</p>
+      <p class="desc"><strong>b) Largo tratamiento:</strong></p>
+      <table>
+        <thead><tr><th>Período</th><th>Haberes</th></tr></thead>
+        <tbody>
+          <tr><td>Primeros 2 años</td><td>100 %</td></tr>
+          <tr><td>Tercer año</td><td>50 %</td></tr>
+          <tr><td>Cuarto año</td><td>Sin goce</td></tr>
+        </tbody>
+      </table>
+      <p class="desc"><strong>c) Accidente / Enf. profesional:</strong> Ley 24.557. Licencia desde el daño hasta el alta médica firme.</p>
+      <p class="sublabel">Procedimiento — corto tratamiento</p>
+      <ol class="steps">
+        <li>Notificar al responsable de cátedra y enviar correo a <strong>saludocupacional@unaj.edu.ar</strong> hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular.</li>
+        <li>Si el estado de salud lo impide, un familiar o persona de contacto puede notificar.</li>
+        <li>RRHH solicita intervención de <strong>Medicina Laboral</strong>.</li>
+        <li>Medicina Laboral evalúa (videollamada, visita o centro médico) y emite resolución.</li>
+        <li>RRHH comunica la resolución a la jefatura.</li>
+        <li>Al reintegrarse: presentar certificado de alta médica.</li>
+      </ol>
+      <div class="note note-warn"><strong>Importante:</strong> El certificado debe indicar diagnóstico (CIE), fecha de inicio y días de reposo. Sin certificado = inasistencia injustificada. En rechazo, interviene Junta Médica tripartita (Art. 47).</div>
+    </div>
+  </div>
+
+  <!-- Licencias Especiales -->
+  <div class="sec" id="sd-esp">
+    <div class="sec-head" onclick="toggle('sd-esp')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-clipboard-list sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencias Especiales</span>
+        <span class="sec-ref">Art. 48 — CCT Docentes</span>
+      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
+    </div>
+    <div class="sec-body">
       <table>
         <thead><tr><th>Motivo</th><th>Duración</th><th>Documentación</th></tr></thead>
         <tbody>
@@ -382,197 +717,194 @@
     </div>
   </div>
 
-  <div class="section-grid">
-    <div class="section" id="sd-est">
-      <div class="section-header" onclick="toggleSection('sd-est')">
-        <i class="ti ti-school section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Licencia por Estudio / Capacitación</span>
-          <span class="section-ref">Art. 49 inc. I d) y e) — CCT Docentes</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
+  <!-- Estudio / Capacitación -->
+  <div class="sec" id="sd-est">
+    <div class="sec-head" onclick="toggle('sd-est')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-school sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencia por Estudio / Capacitación</span>
+        <span class="sec-ref">Art. 49 inc. I d) y e) — CCT Docentes</span>
       </div>
-      <div class="section-body">
-        <table>
-          <thead><tr><th>Tipo</th><th>Días/año</th><th>Documentación</th></tr></thead>
-          <tbody>
-            <tr><td>Exámenes (grado/posgrado)</td><td>Hasta 28 días laborales/año (máx. 5 por final, 3 por parcial)</td><td>Constancia alumno regular + comprobante</td></tr>
-            <tr><td>Concursos docentes universitarios</td><td>Hasta 3 días por prueba de oposición</td><td>Constancia de inscripción</td></tr>
-            <tr><td>Estudio (interés institucional)</td><td>Hasta 1 año (renovable por 1 año más)</td><td>Resolución de interés + convenio</td></tr>
-            <tr><td>Jornadas/congresos</td><td>Según evento, con o sin goce según autorización</td><td>Programa + constancia + autorización</td></tr>
-          </tbody>
-        </table>
-        <ol class="steps">
-          <li>Presentar constancia de alumno regular con <strong>72 hs. de anticipación</strong>.</li>
-          <li>Solicitar autorización firmada por el Director de Departamento.</li>
-          <li>Presentar comprobante de examen rendido dentro de los <strong>5 días hábiles</strong> posteriores.</li>
-        </ol>
-        <div class="note note-info"><strong>Nota:</strong> El docente que goce de licencia por estudio con haberes está obligado a prestar servicios en la UNAJ por un período igual al beneficio gozado; caso contrario, deberá reintegrar los haberes percibidos.</div>
-      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-
-    <div class="section" id="sd-ext">
-      <div class="section-header" onclick="toggleSection('sd-ext')">
-        <i class="ti ti-file-off section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Licencias Extraordinarias sin Goce</span>
-          <span class="section-ref">Art. 49 inc. II — CCT Docentes</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
-      </div>
-      <div class="section-body">
-        <table>
-          <thead><tr><th>Motivo</th><th>Duración</th><th>Requisitos</th></tr></thead>
-          <tbody>
-            <tr><td>Cargo de mayor jerarquía transitorio</td><td>Mientras dure el cargo</td><td>Acreditar designación</td></tr>
-            <tr><td>Razones particulares</td><td>30 días/año de servicio (acumulable hasta 6 meses)</td><td>Antigüedad mín. 2 años ininterrumpidos</td></tr>
-            <tr><td>Unidad familiar (cónyuge a +100 km)</td><td>Duración de la función (mín. 60 días)</td><td>Acreditar destino del cónyuge</td></tr>
-            <tr><td>Excedencia (post maternidad/adopción)</td><td>3 meses</td><td>Haber gozado licencia post maternidad/adopción</td></tr>
-          </tbody>
-        </table>
-        <div class="note note-warn"><strong>Importante:</strong> El reintegro anticipado requiere solicitud con 30 días de anticipación. El término no utilizado no es acumulable en nuevos períodos.</div>
-      </div>
+    <div class="sec-body">
+      <table>
+        <thead><tr><th>Tipo</th><th>Días/año</th><th>Documentación</th></tr></thead>
+        <tbody>
+          <tr><td>Exámenes (grado/posgrado)</td><td>Hasta 28 días laborales/año (máx. 5 por final, 3 por parcial)</td><td>Constancia alumno regular + comprobante</td></tr>
+          <tr><td>Concursos docentes universitarios</td><td>Hasta 3 días por prueba de oposición</td><td>Constancia de inscripción</td></tr>
+          <tr><td>Estudio (interés institucional)</td><td>Hasta 1 año (renovable por 1 año más)</td><td>Resolución de interés + convenio</td></tr>
+          <tr><td>Jornadas/congresos</td><td>Según evento, con o sin goce según autorización</td><td>Programa + constancia + autorización</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps">
+        <li>Presentar constancia de alumno regular con <strong>72 hs. de anticipación</strong>.</li>
+        <li>Solicitar autorización firmada por el Director de Departamento.</li>
+        <li>Presentar comprobante de examen rendido dentro de los <strong>5 días hábiles</strong> posteriores.</li>
+      </ol>
+      <div class="note note-info"><strong>Nota:</strong> El docente que goce de licencia por estudio con haberes está obligado a prestar servicios en la UNAJ por un período igual al beneficio gozado; caso contrario, deberá reintegrar los haberes percibidos.</div>
     </div>
   </div>
 
-  <div class="section-grid">
-    <div class="section" id="sd-inas">
-      <div class="section-header" onclick="toggleSection('sd-inas')">
-        <i class="ti ti-calendar-off section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Justificación de Inasistencias</span>
-          <span class="section-ref">Art. 50 — CCT Docentes</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
+  <!-- Extraordinarias sin goce -->
+  <div class="sec" id="sd-ext">
+    <div class="sec-head" onclick="toggle('sd-ext')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-file-off sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencias Extraordinarias sin Goce</span>
+        <span class="sec-ref">Art. 49 inc. II — CCT Docentes</span>
       </div>
-      <div class="section-body">
-        <p class="sublabel">Con goce de haberes</p>
-        <table>
-          <thead><tr><th>Motivo</th><th>Límite</th></tr></thead>
-          <tbody>
-            <tr><td>Donación de sangre</td><td>1 día (con certificación médica)</td></tr>
-            <tr><td>Reconocimientos médicos obligatorios UNAJ</td><td>Según constancia</td></tr>
-            <tr><td>Razones particulares</td><td>6 días laborales o 12 medias jornadas/año (máx. 2 días/mes)</td></tr>
-            <tr><td>Fuerza mayor</td><td>Mientras persista la imposibilidad</td></tr>
-            <tr><td>Jurado de tesis / mesas examinadoras en otras IIUNN</td><td>Según corresponda</td></tr>
-          </tbody>
-        </table>
-        <p class="desc" style="margin-top:8px;"><strong>Sin goce de haberes:</strong> Hasta 6 días/año (máx. 2/mes) por razones atendibles no encuadradas anteriormente.</p>
-      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
+    <div class="sec-body">
+      <table>
+        <thead><tr><th>Motivo</th><th>Duración</th><th>Requisitos</th></tr></thead>
+        <tbody>
+          <tr><td>Cargo de mayor jerarquía transitorio</td><td>Mientras dure el cargo</td><td>Acreditar designación</td></tr>
+          <tr><td>Razones particulares</td><td>30 días/año de servicio (acumulable hasta 6 meses)</td><td>Antigüedad mín. 2 años ininterrumpidos</td></tr>
+          <tr><td>Unidad familiar (cónyuge a +100 km)</td><td>Duración de la función (mín. 60 días)</td><td>Acreditar destino del cónyuge</td></tr>
+          <tr><td>Excedencia (post maternidad/adopción)</td><td>3 meses</td><td>Haber gozado licencia post maternidad/adopción</td></tr>
+        </tbody>
+      </table>
+      <div class="note note-warn"><strong>Importante:</strong> El reintegro anticipado requiere solicitud con 30 días de anticipación. El término no utilizado no es acumulable en nuevos períodos.</div>
+    </div>
+  </div>
 
-    <div class="section" id="sd-fran">
-      <div class="section-header" onclick="toggleSection('sd-fran')">
-        <i class="ti ti-clock section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Franquicias</span>
-          <span class="section-ref">Art. 51 — CCT Docentes</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
+  <!-- Inasistencias -->
+  <div class="sec" id="sd-inas">
+    <div class="sec-head" onclick="toggle('sd-inas')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-calendar-off sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Justificación de Inasistencias y Franquicias</span>
+        <span class="sec-ref">Arts. 50–51 — CCT Docentes</span>
       </div>
-      <div class="section-body">
-        <table>
-          <thead><tr><th>Franquicia</th><th>Detalle</th></tr></thead>
-          <tbody>
-            <tr><td>Reducción horaria por lactancia</td><td>1 hora por cada 5 hs de jornada, por 240 días desde nacimiento (prorrogable a 365). En adopción: hasta los 8 meses del niño.</td></tr>
-            <tr><td>Actividades gremiales</td><td>Hasta 20% de dedicación horaria mientras dure el mandato sindical</td></tr>
-            <tr><td>Consejos Directivos / Superior</td><td>Franquicia en dedicación según reglamentación institucional</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
+    </div>
+    <div class="sec-body">
+      <p class="sublabel">Inasistencias con goce de haberes</p>
+      <table>
+        <thead><tr><th>Motivo</th><th>Límite</th></tr></thead>
+        <tbody>
+          <tr><td>Donación de sangre</td><td>1 día (con certificación médica)</td></tr>
+          <tr><td>Reconocimientos médicos obligatorios UNAJ</td><td>Según constancia</td></tr>
+          <tr><td>Razones particulares</td><td>6 días laborales o 12 medias jornadas/año (máx. 2 días/mes)</td></tr>
+          <tr><td>Fuerza mayor</td><td>Mientras persista la imposibilidad</td></tr>
+          <tr><td>Jurado de tesis / mesas examinadoras en otras IIUNN</td><td>Según corresponda</td></tr>
+        </tbody>
+      </table>
+      <p class="desc" style="margin-top:10px;"><strong>Sin goce de haberes:</strong> Hasta 6 días/año (máx. 2/mes) por razones atendibles no encuadradas anteriormente.</p>
+      <p class="sublabel">Franquicias (Art. 51)</p>
+      <table>
+        <thead><tr><th>Franquicia</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><td>Reducción horaria por lactancia</td><td>1 hora por cada 5 hs de jornada, por 240 días desde nacimiento (prorrogable a 365). En adopción: hasta los 8 meses del niño.</td></tr>
+          <tr><td>Actividades gremiales</td><td>Hasta 20 % de dedicación horaria mientras dure el mandato sindical</td></tr>
+          <tr><td>Consejos Directivos / Superior</td><td>Franquicia en dedicación según reglamentación institucional</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div><!-- /panel-doc -->
 
 
-<!-- NO DOCENTES -->
+<!-- ─── NO DOCENTES ─── -->
 <div class="panel" id="panel-nod" role="tabpanel">
-  <div class="intro-card nod">
-    <strong>Personal No Docente</strong>
-    <p>Administrativos, técnicos, maestranza y demás trabajadores no docentes.</p>
-    <div class="intro-tags"><span class="intro-tag">CCT No Docentes</span><span class="intro-tag">Decreto 366/06</span></div>
-  </div>
-
-  <div class="section-grid">
-    <div class="section" id="sn-vac">
-      <div class="section-header" onclick="toggleSection('sn-vac')">
-        <i class="ti ti-calendar section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Vacaciones Anuales</span>
-          <span class="section-ref">Arts. 79–90 — CCT No Docente</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
-      </div>
-      <div class="section-body">
-        <p class="desc">Descanso anual remunerado. Antigüedad al 31 de diciembre del año correspondiente.</p>
-        <table>
-          <thead><tr><th>Antigüedad</th><th>Días corridos</th></tr></thead>
-          <tbody>
-            <tr><td>Hasta 5 años</td><td>20 días</td></tr>
-            <tr><td>De 5 a 10 años</td><td>25 días</td></tr>
-            <tr><td>De 10 a 15 años</td><td>30 días</td></tr>
-            <tr><td>De 15 a 20 años</td><td>35 días (fraccionable en 2 períodos, mín. 30 días c/u)</td></tr>
-            <tr><td>Más de 20 años</td><td>40 días (fraccionable en 2 períodos, mín. 30 días c/u)</td></tr>
-          </tbody>
-        </table>
-        <ol class="steps">
-          <li>Acordar con el jefe inmediato según necesidades del servicio.</li>
-          <li>Completar Formulario de Solicitud de Licencia Vacacional (RRHH o portal).</li>
-          <li>Comunicar fecha de inicio por escrito con <strong>45 días corridos de anticipación</strong>.</li>
-          <li>Aguardar aprobación formal. No iniciar sin autorización escrita.</li>
-          <li>Se otorga entre el 15/12 y el 28/02, salvo excepciones fundadas.</li>
-        </ol>
-        <div class="note note-warn"><strong>Importante:</strong> No puede acumularse ni compensarse en dinero. Se interrumpe solo por salud (5+ días), maternidad, fallecimiento de familiar u otros supuestos del régimen. Preferencia al trabajador con hijos en edad escolar.</div>
-      </div>
-    </div>
-
-    <div class="section" id="sn-med">
-      <div class="section-header" onclick="toggleSection('sn-med')">
-        <i class="ti ti-stethoscope section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Licencia por Enfermedad / Médica</span>
-          <span class="section-ref">Arts. 91–96 — CCT No Docente</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
-      </div>
-      <div class="section-body">
-        <p class="desc"><strong>a) Corto tratamiento:</strong> Hasta <strong>45 días corridos</strong>/año con haberes íntegros, por afecciones inculpables incluidas cirugías menores.</p>
-        <p class="desc"><strong>b) Largo tratamiento:</strong></p>
-        <table>
-          <thead><tr><th>Período</th><th>Haberes</th></tr></thead>
-          <tbody>
-            <tr><td>Hasta 1 año</td><td>100%</td></tr>
-            <tr><td>1° prórroga (6 meses)</td><td>100%</td></tr>
-            <tr><td>2° prórroga (6 meses)</td><td>50%</td></tr>
-            <tr><td>Hasta 2 períodos adicionales de 6 meses</td><td>Sin goce</td></tr>
-          </tbody>
-        </table>
-        <p class="desc">Al reintegrarse, no podrá usar nueva licencia de largo tratamiento hasta pasados 3 años.</p>
-        <p class="desc"><strong>c) Accidente / Enf. profesional:</strong> Ley de Riesgos del Trabajo. Notificar de inmediato a RRHH para activación de ART.</p>
-        <p class="sublabel">Procedimiento — corto tratamiento</p>
-        <ol class="steps">
-          <li>Notificar al jefe inmediato y enviar correo a <strong>saludocupacional@unaj.edu.ar</strong> hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular.</li>
-          <li>Si el estado de salud lo impide, un familiar o persona de contacto puede notificar.</li>
-          <li>RRHH solicita intervención de Medicina Laboral.</li>
-          <li>Medicina Laboral evalúa y emite resolución.</li>
-          <li>RRHH comunica la resolución a la jefatura.</li>
-          <li>Al reintegrarse: certificado de alta médica.</li>
-        </ol>
-        <div class="note note-warn"><strong>Importante:</strong> Certificado con diagnóstico, pronóstico y días de reposo. Sin certificado = inasistencia injustificada con descuento de haberes. Si se retira habiendo trabajado menos de media jornada: día de licencia; más de media jornada: permiso de salida.</div>
-      </div>
+  <div class="intro nod">
+    <div class="intro-title">Personal Nodocente</div>
+    <p>Administrativos, técnicos, maestranza y demás trabajadores nodocentes.</p>
+    <div class="intro-badges">
+      <span class="intro-badge">CCT Nodocentes</span>
+      <span class="intro-badge">Decreto 366/06</span>
     </div>
   </div>
 
-  <div class="section" id="sn-esp">
-    <div class="section-header" onclick="toggleSection('sn-esp')">
-      <i class="ti ti-clipboard-list section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Licencias Especiales</span>
-        <span class="section-ref">Arts. 97, 98 y 105 — CCT No Docente</span>
+  <!-- Vacaciones ND -->
+  <div class="sec" id="sn-vac">
+    <div class="sec-head" onclick="toggle('sn-vac')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-calendar sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Vacaciones Anuales</span>
+        <span class="sec-ref">Arts. 79–90 — CCT Nodocente</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
+      <p class="desc">Descanso anual remunerado. Antigüedad al 31 de diciembre del año correspondiente.</p>
+      <table>
+        <thead><tr><th>Antigüedad</th><th>Días corridos</th></tr></thead>
+        <tbody>
+          <tr><td>Hasta 5 años</td><td>20 días</td></tr>
+          <tr><td>De 5 a 10 años</td><td>25 días</td></tr>
+          <tr><td>De 10 a 15 años</td><td>30 días</td></tr>
+          <tr><td>De 15 a 20 años</td><td>35 días (fraccionable en 2 períodos, mín. 30 días c/u)</td></tr>
+          <tr><td>Más de 20 años</td><td>40 días (fraccionable en 2 períodos, mín. 30 días c/u)</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps">
+        <li>Acordar con el jefe inmediato según necesidades del servicio.</li>
+        <li>Completar Formulario de Solicitud de Licencia Vacacional (RRHH o portal).</li>
+        <li>Comunicar fecha de inicio por escrito con <strong>45 días corridos de anticipación</strong>.</li>
+        <li>Aguardar aprobación formal. No iniciar sin autorización escrita.</li>
+        <li>Se otorga entre el 15/12 y el 28/02, salvo excepciones fundadas.</li>
+      </ol>
+      <div class="note note-warn"><strong>Importante:</strong> No puede acumularse ni compensarse en dinero. Se interrumpe solo por salud (5+ días), maternidad, fallecimiento de familiar u otros supuestos del régimen. Preferencia al trabajador con hijos en edad escolar.</div>
+    </div>
+  </div>
+
+  <!-- Enfermedad ND -->
+  <div class="sec" id="sn-med">
+    <div class="sec-head" onclick="toggle('sn-med')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-stethoscope sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencia por Enfermedad / Médica</span>
+        <span class="sec-ref">Arts. 91–96 — CCT Nodocente</span>
+      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
+    </div>
+    <div class="sec-body">
+      <p class="desc"><strong>a) Corto tratamiento:</strong> Hasta <strong>45 días corridos</strong>/año con haberes íntegros, por afecciones inculpables incluidas cirugías menores.</p>
+      <p class="desc"><strong>b) Largo tratamiento:</strong></p>
+      <table>
+        <thead><tr><th>Período</th><th>Haberes</th></tr></thead>
+        <tbody>
+          <tr><td>Hasta 1 año</td><td>100 %</td></tr>
+          <tr><td>1° prórroga (6 meses)</td><td>100 %</td></tr>
+          <tr><td>2° prórroga (6 meses)</td><td>50 %</td></tr>
+          <tr><td>Hasta 2 períodos adicionales de 6 meses</td><td>Sin goce</td></tr>
+        </tbody>
+      </table>
+      <p class="desc">Al reintegrarse, no podrá usar nueva licencia de largo tratamiento hasta pasados 3 años.</p>
+      <p class="desc"><strong>c) Accidente / Enf. profesional:</strong> Ley de Riesgos del Trabajo. Notificar de inmediato a RRHH para activación de ART.</p>
+      <p class="sublabel">Procedimiento — corto tratamiento</p>
+      <ol class="steps">
+        <li>Notificar al jefe inmediato y enviar correo a <strong>saludocupacional@unaj.edu.ar</strong> hasta <strong>2 horas antes del ingreso</strong>. Consignar domicilio y celular.</li>
+        <li>Si el estado de salud lo impide, un familiar o persona de contacto puede notificar.</li>
+        <li>RRHH solicita intervención de Medicina Laboral.</li>
+        <li>Medicina Laboral evalúa y emite resolución.</li>
+        <li>RRHH comunica la resolución a la jefatura.</li>
+        <li>Al reintegrarse: certificado de alta médica.</li>
+      </ol>
+      <div class="note note-warn"><strong>Importante:</strong> Certificado con diagnóstico, pronóstico y días de reposo. Sin certificado = inasistencia injustificada con descuento de haberes. Si se retira habiendo trabajado menos de media jornada: día de licencia; más de media jornada: permiso de salida.</div>
+    </div>
+  </div>
+
+  <!-- Especiales ND -->
+  <div class="sec" id="sn-esp">
+    <div class="sec-head" onclick="toggle('sn-esp')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-clipboard-list sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencias Especiales</span>
+        <span class="sec-ref">Arts. 97, 98 y 105 — CCT Nodocente</span>
+      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
+    </div>
+    <div class="sec-body">
       <table>
         <thead><tr><th>Motivo</th><th>Duración</th><th>Documentación</th></tr></thead>
         <tbody>
@@ -601,50 +933,54 @@
     </div>
   </div>
 
-  <div class="section-grid">
-    <div class="section" id="sn-part">
-      <div class="section-header" onclick="toggleSection('sn-part')">
-        <i class="ti ti-user-check section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Licencia por Razones Particulares</span>
-          <span class="section-ref">Arts. 100–102 — CCT No Docente</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
+  <!-- Razones particulares ND -->
+  <div class="sec" id="sn-part">
+    <div class="sec-head" onclick="toggle('sn-part')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-user-check sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Licencia por Razones Particulares</span>
+        <span class="sec-ref">Arts. 100–102 — CCT Nodocente</span>
       </div>
-      <div class="section-body">
-        <p class="desc"><strong>Sin goce (Art. 100):</strong> Antigüedad mínima de <strong>10 años</strong>. Hasta <strong>12 meses</strong> por decenio, continua o en no más de 2 períodos.</p>
-        <p class="desc"><strong>Con goce — particulares (Art. 101):</strong> Hasta <strong>6 jornadas/año</strong> (máx. 2/mes). Aviso con <strong>24 hs. de antelación</strong>.</p>
-        <p class="desc"><strong>Con goce — excepcionales (Art. 102):</strong> Hasta <strong>5/año</strong>, otorgados por el responsable del área, después de cumplir al menos 2 horas de jornada.</p>
-        <div class="note note-warn"><strong>Importante:</strong> El uso de licencias por razones particulares (Arts. 100, 101 y 102) es considerado en la evaluación anual del agente.</div>
-      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-
-    <div class="section" id="sn-fam">
-      <div class="section-header" onclick="toggleSection('sn-fam')">
-        <i class="ti ti-home-heart section-icon"></i>
-        <div class="section-label">
-          <span class="section-title">Atención de Familiar Enfermo</span>
-          <span class="section-ref">Art. 104 — CCT No Docente</span>
-        </div>
-        <i class="ti ti-chevron-down section-chevron"></i>
-      </div>
-      <div class="section-body">
-        <p class="desc">Hasta <strong>30 días corridos/año</strong> (continuo o fraccionado) con goce de haberes. Extensible hasta <strong>100 días adicionales</strong> con goce solo para parientes de 1° grado, cónyuge, conviviente o ligado por unión civil.</p>
-        <p class="desc">Requiere declaración jurada del grupo familiar y certificado médico con identidad del paciente y necesidad de atención personalizada, verificado por el servicio médico de la UNAJ.</p>
-      </div>
+    <div class="sec-body">
+      <p class="desc"><strong>Sin goce (Art. 100):</strong> Antigüedad mínima de <strong>10 años</strong>. Hasta <strong>12 meses</strong> por decenio, continua o en no más de 2 períodos.</p>
+      <p class="desc"><strong>Con goce — particulares (Art. 101):</strong> Hasta <strong>6 jornadas/año</strong> (máx. 2/mes). Aviso con <strong>24 hs. de antelación</strong>.</p>
+      <p class="desc"><strong>Con goce — excepcionales (Art. 102):</strong> Hasta <strong>5/año</strong>, otorgados por el responsable del área, después de cumplir al menos 2 horas de jornada.</p>
+      <div class="note note-warn"><strong>Importante:</strong> El uso de licencias por razones particulares (Arts. 100, 101 y 102) es considerado en la evaluación anual del agente.</div>
     </div>
   </div>
 
-  <div class="section" id="sn-mat">
-    <div class="section-header" onclick="toggleSection('sn-mat')">
-      <i class="ti ti-baby-carriage section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Maternidad, Adopción y Lactancia</span>
-        <span class="section-ref">Arts. 106, 107, 109 y 110 — CCT No Docente</span>
+  <!-- Familiar enfermo ND -->
+  <div class="sec" id="sn-fam">
+    <div class="sec-head" onclick="toggle('sn-fam')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-home-heart sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Atención de Familiar Enfermo</span>
+        <span class="sec-ref">Art. 104 — CCT Nodocente</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
+      <p class="desc">Hasta <strong>30 días corridos/año</strong> (continuo o fraccionado) con goce de haberes. Extensible hasta <strong>100 días adicionales</strong> con goce solo para parientes de 1° grado, cónyuge, conviviente o ligado por unión civil.</p>
+      <p class="desc">Requiere declaración jurada del grupo familiar y certificado médico con identidad del paciente y necesidad de atención personalizada, verificado por el servicio médico de la UNAJ.</p>
+    </div>
+  </div>
+
+  <!-- Maternidad ND -->
+  <div class="sec" id="sn-mat">
+    <div class="sec-head" onclick="toggle('sn-mat')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-baby-carriage sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Maternidad, Adopción y Lactancia</span>
+        <span class="sec-ref">Arts. 106, 107, 109 y 110 — CCT Nodocente</span>
+      </div>
+      <i class="ti ti-chevron-down sec-chevron"></i>
+    </div>
+    <div class="sec-body">
       <table>
         <thead><tr><th>Concepto</th><th>Duración / Detalle</th></tr></thead>
         <tbody>
@@ -652,7 +988,7 @@
           <tr><td>Licencia post maternidad</td><td>90 días corridos con goce. Acumulación no puede superar 180 días.</td></tr>
           <tr><td>Adopción</td><td>45 días corridos con goce desde tenencia. Luego se asimila a maternidad.</td></tr>
           <tr><td>Lactancia</td><td>2 permisos de 45 min/día (180 días post maternidad); luego 2 de 30 min (180 días más; prorrogable a 1 año).</td></tr>
-          <tr><td>Excedencia</td><td>Hasta 6 meses sin goce (requiere +1 año antigüedad). Alternativa: 50% del mejor salario de últimos 10 años por año de antigüedad.</td></tr>
+          <tr><td>Excedencia</td><td>Hasta 6 meses sin goce (requiere +1 año antigüedad). Alternativa: 50 % del mejor salario de últimos 10 años por año de antigüedad.</td></tr>
         </tbody>
       </table>
     </div>
@@ -660,45 +996,53 @@
 </div><!-- /panel-nod -->
 
 
-<!-- GESTIÓN -->
+<!-- ─── GESTIÓN ─── -->
 <div class="panel" id="panel-trans" role="tabpanel">
-  <div class="intro-card trans">
-    <strong>Procedimientos Transversales</strong>
-    <div class="intro-tags"><span class="intro-tag">Docentes</span><span class="intro-tag">No Docentes</span></div>
+  <div class="intro trans">
+    <div class="intro-title">Procedimientos Transversales</div>
+    <p>Procedimientos que aplican a todo el personal, docente y nodocente.</p>
+    <div class="intro-badges">
+      <span class="intro-badge">Docentes</span>
+      <span class="intro-badge">Nodocentes</span>
+    </div>
   </div>
 
-  <div class="section open" id="st-inas">
-    <div class="section-header" onclick="toggleSection('st-inas')">
-      <i class="ti ti-pencil section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Procedimiento de Inasistencias</span>
-        <span class="section-ref">Todo el personal docente y no docente</span>
+  <!-- Proc. Inasistencias -->
+  <div class="sec open" id="st-inas">
+    <div class="sec-head" onclick="toggle('st-inas')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-pencil sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Procedimiento de Inasistencias</span>
+        <span class="sec-ref">Todo el personal docente y nodocente</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
       <p class="desc"><strong>Objetivo:</strong> Garantizar la comunicación oportuna y el correcto registro ante la inasistencia de un agente.</p>
-      <p class="desc"><strong>Alcance:</strong> Todo el personal docente y no docente, cualquiera sea su modalidad de contratación.</p>
+      <p class="desc"><strong>Alcance:</strong> Todo el personal docente y nodocente, cualquiera sea su modalidad de contratación.</p>
       <ol class="steps">
         <li>Completar el <a href="Formulario%20de%20Inasistencias.pdf" download class="dl-link"><i class="ti ti-download"></i> formulario de inasistencia</a> e informar a la máxima autoridad del área con <strong>24 horas de antelación</strong>.</li>
         <li>El formulario debe ser firmado por el personal y contar con la conformidad de la máxima autoridad del área.</li>
         <li>Presentar en RRHH o enviar escaneado a <strong>recursoshumanos@unaj.edu.ar</strong>.</li>
       </ol>
-      <div class="note note-info"><strong>Nota:</strong> Si la inasistencia se produce antes del aviso, igualmente completar y remitir el formulario con ambas firmas. <strong>No incluye licencias por tiempo prolongado.</strong></div>
-      <p style="font-size:0.74rem;color:var(--soft);margin-top:8px;">Arts. aplicables – Docentes: 45; 48 a) f) y h); 49 inc. I a) a d); 50 inc. 1 a) a e). No Docentes: 84; 97 a) a i); 101; 102; 106; 110.</p>
+      <div class="note note-info"><strong>Nota:</strong> Si la inasistencia se produce antes del aviso, igualmente completar y remitir el formulario con ambas firmas. No incluye licencias por tiempo prolongado.</div>
+      <p class="desc" style="font-size:0.76rem;color:var(--text-3);margin-top:10px;">Arts. aplicables — Docentes: 45; 48 a) f) y h); 49 inc. I a) a d); 50 inc. 1 a) a e). Nodocentes: 84; 97 a) a i); 101; 102; 106; 110.</p>
     </div>
   </div>
 
-  <div class="section" id="st-recmed">
-    <div class="section-header" onclick="toggleSection('st-recmed')">
-      <i class="ti ti-stethoscope section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Procedimiento de Reconocimiento Médico</span>
-        <span class="section-ref">Personal de planta permanente y/o transitoria</span>
+  <!-- Reconocimiento médico -->
+  <div class="sec" id="st-recmed">
+    <div class="sec-head" onclick="toggle('st-recmed')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-stethoscope sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Procedimiento de Reconocimiento Médico</span>
+        <span class="sec-ref">Personal de planta permanente y/o transitoria</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
       <p class="desc"><strong>Objetivo:</strong> Establecer el procedimiento ante inasistencia por salud, garantizando comunicación entre agente, responsable, RRHH y Medicina Laboral.</p>
       <ol class="steps">
         <li>Informar inasistencia y solicitar reconocimiento médico por correo al responsable de comunicaciones del área y a <strong>saludocupacional@unaj.edu.ar</strong>, hasta <strong>2 horas antes del ingreso</strong>. Correos hasta las 11:00 hs se evalúan el mismo día.</li>
@@ -708,21 +1052,23 @@
         <li>RRHH comunica la resolución (justificada / no justificada) a la jefatura.</li>
       </ol>
       <div class="note note-warn"><strong>Importante:</strong> En caso de cuidado de familiar enfermo, adjuntar certificado médico con detalle de la condición de salud.</div>
-      <p style="font-size:0.85rem;margin-top:10px;">Modelo de notificación: <a href="Modelo%20nota%20inasistencia%20por%20enfermedad.docx" download class="dl-link"><i class="ti ti-download"></i> inasistencia por enfermedad</a></p>
-      <p style="font-size:0.74rem;color:var(--soft);margin-top:8px;">Arts. aplicables – Docentes: 46 a), b) y c); 48 g). No Docentes: 91; 92; 104.</p>
+      <p style="font-size:0.86rem;margin-top:12px;">Modelo de notificación: <a href="Modelo%20nota%20inasistencia%20por%20enfermedad.docx" download class="dl-link"><i class="ti ti-download"></i> inasistencia por enfermedad</a></p>
+      <p class="desc" style="font-size:0.76rem;color:var(--text-3);margin-top:10px;">Arts. aplicables — Docentes: 46 a), b) y c); 48 g). Nodocentes: 91; 92; 104.</p>
     </div>
   </div>
 
-  <div class="section" id="st-remp">
-    <div class="section-header" onclick="toggleSection('st-remp')">
-      <i class="ti ti-replace section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Coberturas y Suplencias Docentes</span>
-        <span class="section-ref">Tiempo indeterminado y corta duración</span>
+  <!-- Coberturas y suplencias -->
+  <div class="sec" id="st-remp">
+    <div class="sec-head" onclick="toggle('st-remp')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-replace sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Coberturas y Suplencias Docentes</span>
+        <span class="sec-ref">Tiempo indeterminado y corta duración</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
       <p class="desc"><strong>Suplencias de corta duración:</strong> Períodos con fecha inicio-fin (no superan el 31/12). Se solicitan hasta el 31/10 del período lectivo, por: enfermedad, maternidad, estudio o licencia sin goce por razones particulares.</p>
       <p class="desc"><strong>Coberturas por tiempo indeterminado:</strong> Por renuncia, jubilación, fallecimiento, o licencia sin goce por cargo de mayor jerarquía (requiere certificación de servicios anual).</p>
       <p class="sublabel">Circuito de convocatoria (prioridad)</p>
@@ -730,7 +1076,7 @@
         <li>En la misma materia.</li>
         <li>Materias similares del Instituto.</li>
         <li>Materias similares de la UNAJ.</li>
-        <li>Egresados / No docentes profesionales / Externos.</li>
+        <li>Egresados / Nodocentes profesionales / Externos.</li>
       </ol>
       <p class="sublabel">Plan de acción</p>
       <ol class="steps">
@@ -741,16 +1087,18 @@
     </div>
   </div>
 
-  <div class="section" id="st-anexo">
-    <div class="section-header" onclick="toggleSection('st-anexo')">
-      <i class="ti ti-mail section-icon"></i>
-      <div class="section-label">
-        <span class="section-title">Responsables de Comunicaciones por Dependencia</span>
-        <span class="section-ref">Para notificaciones de inasistencia por enfermedad</span>
+  <!-- Anexo correos -->
+  <div class="sec" id="st-anexo">
+    <div class="sec-head" onclick="toggle('st-anexo')">
+      <span class="sec-dot"></span>
+      <i class="ti ti-mail sec-icon"></i>
+      <div class="sec-label">
+        <span class="sec-title">Responsables de Comunicaciones por Dependencia</span>
+        <span class="sec-ref">Para notificaciones de inasistencia por enfermedad</span>
       </div>
-      <i class="ti ti-chevron-down section-chevron"></i>
+      <i class="ti ti-chevron-down sec-chevron"></i>
     </div>
-    <div class="section-body">
+    <div class="sec-body">
       <p class="desc">Correos de los responsables de comunicaciones de cada dependencia, para copiar en notificaciones de inasistencia por enfermedad:</p>
       <table>
         <thead><tr><th>Dependencia</th><th>Correo electrónico</th></tr></thead>
@@ -781,57 +1129,68 @@
 </div><!-- /panel-trans -->
 
 
-<!-- CONTACTO -->
-<div class="contact-box">
-  <h3>Dirección General de Coordinación Operativa – SEF</h3>
-  <div class="contact-item">
-    <i class="ti ti-mail"></i>
-    <a href="mailto:recursoshumanos@unaj.edu.ar">recursoshumanos@unaj.edu.ar</a>
-    <span class="contact-sep">·</span>
-    <a href="mailto:saludocupacional@unaj.edu.ar">saludocupacional@unaj.edu.ar</a>
+<!-- ════════════════════════════════════════
+     CONTACTO
+     ════════════════════════════════════════ -->
+<div class="contact">
+  <div class="contact-head">Secretaría Económico Financiera</div>
+  <div class="contact-sub">Dirección Gral. de Coordinación Operativa - RRHH — UNAJ</div>
+  <div class="contact-grid">
+    <div class="contact-row">
+      <i class="ti ti-mail"></i>
+      <a href="mailto:recursoshumanos@unaj.edu.ar">recursoshumanos@unaj.edu.ar</a>
+    </div>
+    <div class="contact-row">
+      <i class="ti ti-first-aid-kit"></i>
+      <a href="mailto:saludocupacional@unaj.edu.ar">saludocupacional@unaj.edu.ar</a>
+    </div>
+    <div class="contact-row">
+      <i class="ti ti-clock"></i>
+      Lunes a Viernes · Horario de atención a consultar
+    </div>
   </div>
-  <div class="contact-item">
-    <i class="ti ti-clock"></i>
-    Lunes a Viernes · Horario de atención a consultar
-  </div>
-  <p style="font-size:0.72rem;color:var(--soft);margin-top:8px;line-height:1.5;">Información orientativa basada en la normativa vigente y los CCT de Docentes y No Docentes de las Universidades Nacionales. Ante cualquier duda, consultá con la Dirección de RRHH.</p>
+  <p class="contact-disclaimer">Información orientativa basada en la normativa vigente y los Convenios Colectivos de Trabajo de Docentes y Nodocentes de las Universidades Nacionales. Ante cualquier duda, consultá con la Dirección Gral. de Coordinación Operativa - RRHH.</p>
 </div>
 
 </main>
 
 <footer>
-  <strong>UNAJ</strong> · Información orientativa basada en la normativa vigente.<br>
-  Ante cualquier duda, consultá siempre la Dirección de Recursos Humanos.
+  <span>Secretaría Económico Financiera · Dirección Gral. de Coordinación Operativa - RRHH · UNAJ</span>
+  <span>Información orientativa basada en la normativa vigente</span>
 </footer>
 
 <script>
+  /* Convenios dropdown */
   function toggleConv(e) {
     e.stopPropagation();
-    var menu = document.getElementById('conv-menu');
-    var btn  = document.getElementById('conv-toggle');
-    var open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(open));
+    var m = document.getElementById('conv-menu');
+    var b = document.getElementById('conv-toggle');
+    var open = m.classList.toggle('open');
+    b.setAttribute('aria-expanded', String(open));
   }
   document.addEventListener('click', function () {
     document.getElementById('conv-menu').classList.remove('open');
     document.getElementById('conv-toggle').setAttribute('aria-expanded', 'false');
   });
 
-  var TAB_CLS = { doc: 'act-doc', nod: 'act-nod', trans: 'act-trans' };
+  /* Tabs */
+  var TAB_CLS = { doc: 'active-doc', nod: 'active-nod', trans: 'active-trans' };
   function switchTab(tab) {
     ['doc', 'nod', 'trans'].forEach(function (k) {
       document.getElementById('panel-' + k).classList.remove('active');
       var btn = document.getElementById('btn-' + k);
-      btn.classList.remove('act-doc', 'act-nod', 'act-trans');
+      btn.classList.remove('active-doc', 'active-nod', 'active-trans');
       btn.setAttribute('aria-selected', 'false');
     });
     document.getElementById('panel-' + tab).classList.add('active');
     var active = document.getElementById('btn-' + tab);
     active.classList.add(TAB_CLS[tab]);
     active.setAttribute('aria-selected', 'true');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function toggleSection(id) {
+  /* Accordion */
+  function toggle(id) {
     document.getElementById(id).classList.toggle('open');
   }
 </script>
